@@ -1,0 +1,31 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+body { color: theme('colors.text1'); }
+
+/* 한국어 기본 */
+:lang(ko) { font-family: theme('fontFamily.ko'), sans-serif; line-height: theme('lineHeight.ko'); }
+
+/* 영어기본 */
+:lang(en) { font-family: theme('fontFamily.en'), serif; line-height: 1.4; }
+
+/* 타이틀/헤드라인 */
+.h-title { color: theme('colors.text0'); letter-spacing: theme('letterSpacing.tight'); }
+
+/* 버튼 베이스 */
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl2 px-5 py-3 font-medium transition shadow-soft;
+}
+.btn-primary { @apply bg-point text-white hover:opacity-90; }
+.btn-ghost  { @apply bg-transparent text-white border border-white/40 hover:bg-white/10; }
+.btn-disabled { @apply bg-disable text-white cursor-not-allowed shadow-none; }
+
+.leading-trim {
+  line-height: 1; /* 캡높이에 맞춰 타이트하게 */
+  display: inline-block;
+  transform: translateY(0.02em); 
+}
+}

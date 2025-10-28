@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "jsx": "react-jsx" // Vite + React의 기본 설정입니다.
+  }
+}
