@@ -5,28 +5,67 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}", // src 폴더 내 모든 관련 파일
   ],
   theme: {
+    screens: { 
+      sm: '480px',    // Mobile
+      md: '768px',    // Tablet
+      lg: '1080px',   // Laptop
+      xl: '1440px',   // Desktop
+    },
     extend: {
-       colors: {
-        serve:  '#EAE3DC', // servecolor
-        point:  '#570E19', // pointcolor
-        wineBg: '#370910', // 배경
-        text0:  '#000000', // 타이틀
-        text1:  '#353535', // 기본 본문
-        disable:'#E2E2E2', // 비활성 버튼
+      colors: {
+        mainColor: '#570E19',
+        basicColor: '#000',
+        serveColor1: '#F5F5F5',
+        serveColor2: '#EAE3DC',
+        footer: '#220D0C',
+        newBadge: '#CBAB85',
+        eventBadge: '#B6D3EF',
+        bestBadge: '#EAC9CE',
+        RwineBadge: '#292522',
+        white: '#fff',
+        red: '#8F0016',
+        gray: '#838383',
+        reviewStar: '#F5B15F',
+        disable: '#E2E2E2',
+        barcolor: '#DDCFD1',
+        bestMenu: '#DC9BA5',
+        eventMenu: '#85AACB',
+        newMenu: '#CBAB85',
       },
       fontFamily: {
-        display: ['"Kaushan Script"', 'system-ui', 'sans-serif'], // my pick
+        mypick: ['"Kaushan Script"', 'system-ui', 'sans-serif', 'cursive'], // my pick
         en: ['Caudex', 'serif'],
-        ko: ['Pretendard Variable', 'Pretendard', 'ui-sans-serif', 'system-ui'],
+        ko: ['Pretendard', 'ui-sans-serif', 'system-ui'],
       },
       fontSize: {
-        'mypick': '104.313px',
+        picktit: '128px',
+        tit: ['var(--ty-tit-size)', {
+          lineHeight: 'var(--ty-tit-lineh)',
+        }],
+        subtit:'28px',
+        body: ['var(--ty-body-size)', {
+          lineHeight: 'var(--ty-body-lineh)',
+        }],
       },
-      // line-height 토큰 (국문 기본 198.5%)
-      lineHeight: {
-        ko: '1.985',
-      },
-      letterSpacing: {
+      fontWeight: {
+        thin: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        black: '900',
+      }, 
+      spacing: {
+        xl: 'var(--sp-xl)', // 1440px 기준 64px
+        lg: 'var(--sp-lg)', // 1440px 기준 32px
+        md: 'var(--sp-md)', // 1440px 기준 16px
+        sm: 'var(--sp-sm)', // 1440px 기준 8px
+      }, 
+  
+      letterspacing: {
         tight: '-0.01em',
       },
       borderRadius: {
