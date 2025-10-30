@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1400" viewBox="0 0 1600 1400">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#570E19" />
+    </marker>
+    <style>
+      text { font-family: Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+      .hint { fill:#570E19; font-weight:600; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1600" height="1400" fill="#F6EFE9"/>
+  <text x="800.0" y="48" text-anchor="middle" font-size="28" class="hint">Wio Rhythm – React 컴포넌트 아키텍처</text>
+
+    <g id="app" class="node" transform="translate(540.0,80)">
+      <rect rx="14" ry="14" x="0" y="0" width="520" height="120" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="260.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;App /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="488" height="60">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            &lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;Global State&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;viewMode: 'main' | 'quiz' | 'results'&lt;/li&gt;
+  &lt;li&gt;quizAnswers: {'{'} q1, q2, ... {'}'}&lt;/li&gt;
+&lt;/ul&gt;
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="mainsection" class="node" transform="translate(590.0,240)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;MainSection /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            우측 메인 컨텐츠 영역&lt;br/&gt;viewMode에 따라 뷰 전환
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="nav" class="node" transform="translate(120,240)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;Navigation /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            좌측 고정 내비게이션&lt;br/&gt;Wio Rhythm • B2B • My Pick • All Products ...
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="footer" class="node" transform="translate(590.0,1240)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;Footer /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            하단 푸터 영역&lt;br/&gt;CS Center • 이용약관 ...
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    <line x1="800.0" y1="200" x2="330.0" y2="240" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="800.0" y1="200" x2="800.0" y2="240" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="800.0" y1="200" x2="800.0" y2="1240" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/>
+    <g id="mainpage" class="node" transform="translate(120,420)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;MainPage /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            메인(히어로 + 리스트)&lt;br/&gt;'내 취향 찾기' 클릭 → setViewMode('quiz')
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="mypick" class="node" transform="translate(120,580)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;MyPickHero /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            와인 배경 • “My Pick” • CTA 버튼
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="winelist" class="node" transform="translate(120,740)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;WineListSection /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            마스터의 특별 추천 • 테마별 추천
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="winecard" class="node" transform="translate(120,900)">
+      <rect rx="14" ry="14" x="0" y="0" width="320" height="92" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="160.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;WineCard /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="288" height="32">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            재사용 가능한 와인 상품 카드
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    <line x1="330.0" y1="530" x2="300.0" y2="580" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="330.0" y1="530" x2="300.0" y2="740" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="300.0" y1="840" x2="280.0" y2="900" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/>
+    <g id="tastequiz" class="node" transform="translate(640,420)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;TasteQuiz /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            퀴즈 완료 시 setQuizAnswers(localAnswers) → setViewMode('results')
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="quizstep" class="node" transform="translate(640,580)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;QuizStep /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            현재 step에 맞는 질문/선택지
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="quiznav" class="node" transform="translate(640,740)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;QuizNavigation /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            다음 / 결과보기 / 처음으로
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    <line x1="850.0" y1="530" x2="820.0" y2="580" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="820.0" y1="680" x2="820.0" y2="740" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/>
+    <g id="results" class="node" transform="translate(1160,420)">
+      <rect rx="14" ry="14" x="0" y="0" width="420" height="110" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="210.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;QuizResults /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="388" height="50">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            {quizAnswers} props로 추천 목록 렌더
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="reclist" class="node" transform="translate(1160,580)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;RecommendedWineList /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            추천 와인 리스트
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="winecard2" class="node" transform="translate(1160,740)">
+      <rect rx="14" ry="14" x="0" y="0" width="320" height="92" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="160.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;WineCard /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="288" height="32">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            재사용
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    
+    <g id="backbtn" class="node" transform="translate(1160,900)">
+      <rect rx="14" ry="14" x="0" y="0" width="360" height="100" fill="white" stroke="#570E19" stroke-width="2"/>
+      <text x="180.0" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#570E19">&amp;lt;BackButton /&amp;gt;</text>
+      <foreignObject x="16" y="48" width="328" height="40">
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <div style="font-size:14px; color:#2B2220; line-height:1.35; font-family:Inter, Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+            첫페이지로 돌아가기 (setViewMode('main'))
+          </div>
+        </body>
+      </foreignObject>
+    </g>
+    <line x1="1370.0" y1="530" x2="1340.0" y2="580" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="1340.0" y1="680" x2="1320.0" y2="740" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="1340.0" y1="840" x2="1340.0" y2="900" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="800.0" y1="350" x2="330.0" y2="420" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="800.0" y1="350" x2="850.0" y2="420" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/><line x1="800.0" y1="350" x2="1370.0" y2="420" stroke="#570E19" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

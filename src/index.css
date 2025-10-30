@@ -32,7 +32,7 @@
 .btn {
   @apply inline-flex items-center justify-center rounded-xl2 px-5 py-3 font-medium transition shadow-soft;
 }
-.btn-primary { @apply bg-point text-white hover:opacity-90; }
+.btn-primary { @apply bg-mainColor text-white hover:opacity-90; }
 .btn-ghost  { @apply bg-transparent text-white border border-white/40 hover:bg-white/10; }
 .btn-disabled { @apply bg-disable text-white cursor-not-allowed shadow-none; }
 }
