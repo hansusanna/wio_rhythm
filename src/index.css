@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /*순수 HTML 태그(body, h1...)의 기본 스타일*/
 @layer base {
   body{
@@ -24,24 +25,3 @@
 :lang(en) { font-family: theme('fontFamily.en'), serif; line-height: 1.4; }
 
 } 
-
-/* 재사용 가능한 컴포넌트 클래스 */
-@layer components {
-.h-title { color: theme('colors.white'); font-size:var(--ty-tit-size); letter-spacing: theme('letterSpacing.tight'); }
-
-.btn {
-  @apply inline-flex items-center justify-center rounded-xl2 px-5 py-3 font-medium transition shadow-soft;
-}
-.btn-primary { @apply bg-mainColor text-white hover:opacity-90; }
-.btn-ghost  { @apply bg-transparent text-white border border-white/40 hover:bg-white/10; }
-.btn-disabled { @apply bg-disable text-white cursor-not-allowed shadow-none; }
-}
-
-/* 커스텀 유틸리티 클래스 */
-@layer utilities {
-.leading-trim {
-  line-height: 1; /* 캡높이에 맞춰 타이트하게 */
-  display: inline-block;
-  transform: translateY(0.02em); 
-}
-}

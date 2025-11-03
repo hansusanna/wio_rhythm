@@ -13,26 +13,34 @@ export default {
     },
     extend: {
       colors: {
-        mainColor: '#570E19',
-        basicColor: '#000',
-        serveColor1: '#F5F5F5',
-        serveColor2: '#EAE3DC',
-        footer: '#220D0C',
-        newBadge: '#CBAB85',
-        eventBadge: '#B6D3EF',
-        bestBadge: '#EAC9CE',
-        RwineBadge: '#292522',
-        white: '#fff',
-        red: '#8F0016',
-        gray: '#838383',
-        reviewStar: '#F5B15F',
-        disable: '#E2E2E2',
-        barcolor: '#DDCFD1',
-        bestMenu: '#DC9BA5',
-        eventMenu: '#85AACB',
-        newMenu: '#CBAB85',
+        // 1.브랜드
+        brand: {
+          primary: '#370910', // mainColor
+          accent: '#570E19',   // red
+          dark: '#220D0C',    // footer
+        },
+        // 2.UI요소 색상(대체 불가능한 고유색상만)
+        ui: {
+          backgroundalt: '#EAE3DC', // serveColor2 (따뜻한 회색)
+          border: '#DDCFD1',       // barcolor
+          gray: '#838383',         //gray (기본 gray와 톤이 다름)
+        },
+        // 3.테마색상(뱃지,메뉴 등)
+        semantic: {
+          new: '#CBAB85',    // newBadge/newMenu
+          event: {
+            DEFAULT: '#85AACB', // eventMenu
+            light: '#B6D3EF',   // eventBadge
+          },
+          best: {
+            DEFAULT: '#DC9BA5', // bestMenu
+            light: '#EAC9CE',   // bestBadge
+          },
+          rwine: '#292522',    // RwineBadge
+        },
       },
       fontFamily: {
+        logo : ['"La Belle Aurore"', 'cursive'],
         mypick: ['"Kaushan Script"', 'system-ui', 'sans-serif', 'cursive'], // my pick
         en: ['Caudex', 'serif'],
         ko: ['Pretendard', 'ui-sans-serif', 'system-ui'],
@@ -48,15 +56,8 @@ export default {
         }],
       },
       fontWeight: {
-        thin: '100',
         extralight: '200',
-        light: '300',
-        normal: '400',
-        medium: '500',
-        semibold: '600',
-        bold: '700',
         extrabold: '800',
-        black: '900',
       }, 
       spacing: {
         xl: 'var(--sp-xl)', // 1440px 기준 64px

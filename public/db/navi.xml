@@ -1,0 +1,32 @@
+<navi>
+<menu>
+    <item>   
+        <title>WIO-RTYTYM</title>
+        <link>/wiorhythm</link> 
+    </item>
+    <item>   
+        <title>B2B</title>
+        <link>/b2b</link> 
+    </item>
+    <item>   
+        <title>맞춤구독</title>
+        <link>/subscribe</link> 
+    </item>
+    <item>   
+        <title>MYpick</title>
+        <link>/mypick</link> 
+    </item>
+    <item>   
+        <title>All Products</title>
+        <link>/products</link> 
+    </item>
+    <item>   
+        <title>Premium</title>
+        <link>/premium</link> 
+    </item>
+    <item>   
+        <title>Rhythm Table</title>
+        <link>/table</link> 
+    </item>
+</menu>
+</navi>
