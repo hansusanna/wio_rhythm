@@ -4,29 +4,33 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
-      {/* 배경 섹션 (히어로) */}
-      <section className="relative flex items-center justify-center">
-        <div className="relative">
-          <img src="/images/mainbg.jpg"  alt="wine background" className="w-[640px] max-w-[90vw] shadow-soft"/>
-          {/* 중앙 타이틀: 지샵 애니메이션 타겟 */}
-          <h1 id="mypick-heading" data-animate="mypick"
-            className="pointer-events-none select-none absolute inset-0 flex items-center justify-center
-                       text-5xl sm:text-6xl md:text-7xl font-extrabold italic drop-shadow">
-            My Pick
-          </h1>
-          {/* CTA 버튼: 메인색, 이미지 위 오버레이 */}
-          <div className="absolute inset-x-0 bottom-6 sm:bottom-8 flex justify-center">
-            <Link to="/mypick"
-              className="inline-flex items-center justify-center rounded-xl bg-brand-primary px-6 py-3
-                         text-white text-sm sm:text-base font-semibold shadow-md hover:opacity-95 active:opacity-90 transition" aria-label="내 취향 찾기 페이지로 이동">
+      {/* 배경 섹션 */}
+      <section className="h-[100svh] flex items-center justify-center text-black">
+        {/* 메인 640px 기준 배경 컨테이너 */}
+        <div className="w-[640px] max-w-[90vw] h-full bg-[url('/images/mainbg.jpg')] bg-cover bg-center flex items-center justify-center">
+          {/* 콘텐츠 박스: 절대포지션 없이 중앙정렬 */}
+          <div className="flex flex-col items-center justify-center text-center h-full py-[clamp(40px,8vh,96px)]">
+            {/* 타이틀 */}
+            <p id="mypick-heading" data-animate="mypick" className="font-mypick text-picktit font-nomal select-none wio-hero-title">
+              My Pick
+            </p>
+
+            {/* 서브타이틀: 메인 640px 기준 80% */}
+            <p className="w-[80%] max-w-[512px] text-h2 font-medium wio-hero-subtitle">
+              수 많은 와인 속,<br/>당신만의 보석을 찾아보세요
+            </p>
+
+            {/* CTA 버튼: 유동 크기 */}
+            <Link to="/mypick" className="w-[80%] max-w-[512px] inline-flex items-center justify-center
+                bg-brand-accent text-white text-findtit px-4 py-5 min-h-[44px] shadow-md
+                hover:opacity-95 active:opacity-90 transition wio-hero-cta" aria-label="내 취향 찾기 페이지로 이동">
               내 취향 찾기
             </Link>
           </div>
         </div>
       </section>
-
       {/* 스크롤 다운 → 실제 컨텐츠 시작 */}
-      <div className="bg-white/95 text-neutral-900 p-4 sm:pt-6 sm:px-6 md:p-8">
+      <div className="bg-white text-neutral-900 p-4 sm:pt-6 sm:px-6 md:p-8">
         {/* 여기부터 시안 섹션들 */}
           {/* <HeroSlider /> */}
          {/* <SubscribeForm /> */}

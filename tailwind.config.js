@@ -46,14 +46,18 @@ export default {
         ko: ['Pretendard', 'ui-sans-serif', 'system-ui'],
       },
       fontSize: {
-        picktit: '128px',
+        picktit:['128px', {
+          lineHeight: '1',
+        }],
         tit: ['var(--ty-tit-size)', {
           lineHeight: 'var(--ty-tit-lineh)',
         }],
-        subtit:'28px',
+        subtit:'var(--ty-sub-size)',
         body: ['var(--ty-body-size)', {
           lineHeight: 'var(--ty-body-lineh)',
         }],
+        h2:'var(--ty-h2-size)',
+        findtit:'var(--ty-findtit-size)',
       },
       fontWeight: {
         extralight: '200',

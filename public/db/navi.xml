@@ -3,30 +3,37 @@
     <item>   
         <title>WIO-RTYTYM</title>
         <link>/wiorhythm</link> 
+        <lang>en</lang>
     </item>
     <item>   
         <title>B2B</title>
-        <link>/b2b</link> 
+        <link>/b2b</link>
+        <lang>en</lang> 
     </item>
     <item>   
         <title>맞춤구독</title>
-        <link>/subscribe</link> 
+        <link>/subscribe</link>
+        <lang>ko</lang>
     </item>
     <item>   
-        <title>MYpick</title>
-        <link>/mypick</link> 
+        <title>MyPick</title>
+        <link>/mypick</link>
+        <lang>en</lang>
     </item>
     <item>   
         <title>All Products</title>
-        <link>/products</link> 
+        <link>/products</link>
+        <lang>en</lang>
     </item>
     <item>   
         <title>Premium</title>
         <link>/premium</link> 
+        <lang>en</lang>
     </item>
     <item>   
         <title>Rhythm Table</title>
-        <link>/table</link> 
+        <link>/table</link>
+        <lang>en</lang>
     </item>
 </menu>
 </navi>

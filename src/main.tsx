@@ -3,7 +3,8 @@ import { Helmet, HelmetProvider  } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom'
 import './styles/_global.scss'
 import './index.css'
-import App from './App'
+import App from './App'   // Tailwind + 기본 스타일
+import './styles/pm-overrides.css' // ← 기획자 전용, 항상 마지막에
 
 createRoot(document.getElementById('root')!).render(
    <HelmetProvider>

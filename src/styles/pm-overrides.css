@@ -1,0 +1,15 @@
+/* === 기획자 전용 스타일 (간단 수정용) === */
+
+/* ===============================
+   [MAIN HERO] - 타이틀 / 서브타이틀 / 버튼
+   =============================== */
+.wio-hero-title { margin-bottom: 5rem; }
+.wio-hero-subtitle { margin-bottom: 2.5rem; }
+.wio-hero-cta { border-radius: 0.75rem; }
+
+/* ===============================
+   [NAVIGATION] - 좌측 메뉴 타이포/간격
+   =============================== */
+.wineicon {color: white;}
+.font-logo { font-size: 3rem; }
+.pc-logo { font-size: 3rem; }
