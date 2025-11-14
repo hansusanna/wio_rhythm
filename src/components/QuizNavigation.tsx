@@ -29,7 +29,7 @@ export function QuizNavigation({
       <button
         type="button"
         onClick={onCancel}
-        className="rounded-xl px-4 py-3 font-semibold bg-[#3a0a0e] text-white/90 hover:bg-[#421117]"
+        className="px-4 py-3 font-semibold text-black/50 hover:text-black"
         aria-label="처음으로"
       >
         처음으로

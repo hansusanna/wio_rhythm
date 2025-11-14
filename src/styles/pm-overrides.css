@@ -10,6 +10,6 @@
 /* ===============================
    [NAVIGATION] - 좌측 메뉴 타이포/간격
    =============================== */
-.wineicon {color: white;}
+.wineicon {text-align: center;}
 .font-logo { font-size: 3rem; }
 .pc-logo { font-size: 3rem; }

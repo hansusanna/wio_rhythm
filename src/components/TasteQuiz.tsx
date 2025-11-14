@@ -7,7 +7,7 @@ import { QuizNavigation } from '@/components/QuizNavigation';
 
 type Props = {
   onCancelToMain: () => void;                 // "처음으로" 클릭
-  onComplete: (answers: QuizAnswers) => void; // 결과보기 시 상위로 lift-up
+  onComplete: (answers: QuizAnswers) => void; // 결과보기 
 };
 
 const STEP_DEFS = StepDefs as StepDef[];
@@ -21,7 +21,9 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
 
   // 현재 스텝의 두 질문 key
   const [q1, q2] = step.questions.map(q => q.key);
-  const bothAnswered = Boolean(answers[q1] && answers[q2]);
+  const bothAnswered = Boolean(answers[q1] && answers[q2]); //2개 고정 일때
+// const bothAnswered = step.questions.every(q => !!answers[q.key]); 
+// 나중에 3개, 1개가 될 수도 있다?로 하면 “현재 step의 모든 질문에 답했는가?”로 의미가 더 명확 > 추후 수정원하면 변경
 
   const handleSelect = (key: AnswerKey, v: string) => {
     setAnswers(prev => ({ ...prev, [key]: v }));

@@ -2,7 +2,7 @@
 export type ViewMode = 'main' | 'quiz' | 'results';
 
 export type AnswerKey =
-  | 'type'     // 종류: red / white / rose / sparkling
+  | 'type'     // 종류: red / white / rose / champagne / sparkling
   | 'region'   // 지역: europe / northamerica / southamerica / etc
   | 'body'     // 바디감: light / medium / full
   | 'tannin'   // 타닌감: low / medium / high

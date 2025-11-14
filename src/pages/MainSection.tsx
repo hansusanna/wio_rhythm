@@ -1,18 +1,25 @@
-
-import { useState } from 'react';
 import type { ViewMode, QuizAnswers } from '@/db/type/quiz';
-import TasteQuiz from '@/pages/TasteQuiz';
-import QuizResults from '@/pages/QuizResults';
 import Home from '@/pages/Home';
+import TasteQuiz from '@/components/TasteQuiz';
+import QuizResults from '@/components/QuizResults';
 
-export default function MainSection() {
-  const [viewMode, setViewMode] = useState<ViewMode>('main');
-  const [quizAnswers, setQuizAnswers] = useState<QuizAnswers>({});
+type Props = {
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
+  quizAnswers: QuizAnswers;
+  setQuizAnswers: (a: QuizAnswers) => void;
+};
 
+export default function MainSection({
+  viewMode,
+  setViewMode,
+  quizAnswers,
+  setQuizAnswers,
+}: Props) {
   return (
-    <>
+    <section className="mx-auto max-w-6xl h-[100svh]">
       {viewMode === 'main' && (
-        <Home /* Hero CTA에서 */ /* onStart={() => setViewMode('quiz')} */ />
+        <Home onStart={() => setViewMode('quiz')} />
       )}
 
       {viewMode === 'quiz' && (
@@ -31,6 +38,6 @@ export default function MainSection() {
           onBackToFirst={() => setViewMode('main')}
         />
       )}
-    </>
+    </section>
   );
 }

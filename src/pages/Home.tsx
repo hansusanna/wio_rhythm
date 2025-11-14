@@ -1,7 +1,6 @@
 
-import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ onStart }: { onStart?: () => void }) {
   return (
     <>
       {/* 배경 섹션 */}
@@ -20,12 +19,16 @@ export default function Home() {
               수 많은 와인 속,<br/>당신만의 보석을 찾아보세요
             </p>
 
-            {/* CTA 버튼: 유동 크기 */}
-            <Link to="/mypick" className="w-[80%] max-w-[512px] inline-flex items-center justify-center
+            <button
+              type="button"
+              onClick={onStart} // 여기서 quiz 모드 오픈
+              className="w-[80%] max-w-[512px] inline-flex items-center justify-center
                 bg-brand-accent text-white text-findtit px-4 py-5 min-h-[44px] shadow-md
-                hover:opacity-95 active:opacity-90 transition wio-hero-cta" aria-label="내 취향 찾기 페이지로 이동">
+                hover:opacity-95 active:opacity-90 transition wio-hero-cta"
+              aria-label="내 취향 찾기 모달 열기"
+              >
               내 취향 찾기
-            </Link>
+              </button>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
-// src/pages/QuizResults.tsx
+// src/components/QuizResults.tsx
 import type { QuizAnswers } from '@/db/type/quiz';
-import { RecommendedWineList } from '@/components/RecommendedWineList';
+import { RecommendationSection } from './RecommendationSection';
 
 export default function QuizResults({
   answers,
@@ -17,7 +17,7 @@ export default function QuizResults({
         내 취향에 꼭 맞는 와인
       </h2>
 
-      <RecommendedWineList answers={answers} />
+      <RecommendationSection answers={answers} />
 
       <div className="mt-8 flex justify-end">
         <button

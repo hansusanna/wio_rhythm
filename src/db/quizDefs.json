@@ -9,6 +9,7 @@
           { "value": "red", "label": "레드" },
           { "value": "white", "label": "화이트" },
           { "value": "rose", "label": "로제" },
+          { "value": "champagne", "label": "샴페인" },
           { "value": "sparkling", "label": "스파클링" }
         ]
       },
