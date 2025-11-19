@@ -16,10 +16,13 @@ export function TasteBar({ label, levelKey, answers }: Props) {
   const stepsLabel =
     levelKey === 'body'
       ? ['라이트', '보통', '풀바디']
+      : levelKey === 'sweetness'
+      ? ['낮음', '보통', '높음']
       : ['약함', '보통', '강함'];
+     
 
   return (
-    <div className="flex items-center gap-3 text-xs">
+    <div className="flex items-center gap-3">
       <div className="w-16 shrink-0 font-medium text-gray-700">{label}</div>
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex gap-1">
@@ -28,12 +31,12 @@ export function TasteBar({ label, levelKey, answers }: Props) {
               key={i}
               className={
                 'h-2 flex-1 rounded-full transition-colors ' +
-                (activeIndex === i ? 'bg-[#570E19]' : 'bg-gray-200')
+                (activeIndex === i ? 'bg-[#570E19]' : 'bg-gray-300')
               }
             />
           ))}
         </div>
-        <div className="flex justify-between text-[10px] text-gray-500">
+        <div className="flex justify-between text-xs text-gray-500">
           {stepsLabel.map((txt) => (
             <span key={txt}>{txt}</span>
           ))}

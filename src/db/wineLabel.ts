@@ -1,4 +1,6 @@
 // src/db/wineLabel.ts
+import type { QuizAnswers } from '@/db/type/quiz';
+
 export function typeLabel(value?: string) {
   if (!value) return '-';
   switch (value) {
@@ -34,3 +36,50 @@ export function regionLabel(value?: string) {
       return value;
   }
 }
+// 종류 뱃지
+export const typeBadgeImages: Record<QuizAnswers['type'], string> = {
+  red: '/images/badge/red.png',
+  white: '/images/badge/white.png',
+  rose: '/images/badge/rose.png',
+  sparkling: '/images/badge/sparkling.png',
+  champagne: '/images/badge/cham.png',
+};
+
+// 국가 뱃지 정보의 타입을 정의합니다
+type CountryBadge = {
+  label: string;
+  src: string;
+};
+
+// 와인 지역키에 따른 뱃지 이미지 경로 맵 */
+export const regionCountryBadges: Record<
+  QuizAnswers['region'],
+  CountryBadge[]
+> = {
+  europe: [
+    // '유럽'을 선택하면 이 배열의 모든 뱃지가 표시됩니다.
+    { label: '프랑스', src: '/images/badge/fra.png' },
+    { label: '이탈리아', src: '/images/badge/ity.png' },
+    { label: '독일', src: '/images/badge/ger.png' },
+    { label: '스페인', src: '/images/badge/spa.png' },
+    // (필요한 국가 뱃지들을 여기에 추가하세요)
+  ],
+  northamerica: [
+    { label: '미국', src: '/images/badge/usa.png' },
+    // (필요한 국가 뱃지들을 여기에 추가하세요)
+  ],
+  southamerica: [
+    { label: '칠레', src: '/images/badge/chi.png' },
+    { label: '아르헨티나', src: '/images/badge/arg.png' },
+    // (필요한 국가 뱃지들을 여기에 추가하세요)
+  ],
+  oceania: [
+    { label: '호주', src: '/images/badge/aus.png' },
+    { label: '뉴질랜드', src: '/images/badge/nez.png' },
+    // (필요한 국가 뱃지들을 여기에 추가하세요)
+  ],
+  etc: [
+    { label: '기타', src: '/images/badge/aus.png' },
+    { label: '기타', src: '/images/badge/nez.png' },
+  ],
+};

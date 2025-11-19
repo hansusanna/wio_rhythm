@@ -16,7 +16,8 @@ export type QuizAnswers = Partial<Record<AnswerKey, AnswerValue>>;
 export type QuestionDef = {
   key: AnswerKey;
   title: string;
-  options: { value: AnswerValue; label: string; hint?: string }[];
+  hints?: string[];
+  options: { value: AnswerValue; label: string;}[];
 };
 
 export type StepDef = {

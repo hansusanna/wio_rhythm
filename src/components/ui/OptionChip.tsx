@@ -1,26 +1,24 @@
 // src/components/ui/OptionChip.tsx
 type OptionChipProps = {
   label: string;
-  hint?: string;
   active?: boolean;
   onClick?: () => void;
 };
 
-export function OptionChip({ label, hint, active = false, onClick }: OptionChipProps) {
+export function OptionChip({ label, active = false, onClick }: OptionChipProps) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
       className={[
-        'rounded-2xl px-5 py-2.5 border text-sm transition',
+        'rounded-xl px-7 py-5 border text-base transition font-medium',
         active
           ? 'bg-brand-accent text-white border-brand-accent'
-          : 'bg-white/10 text-white/90 border-white/20 hover:bg-white/15',
+          : 'bg-ui-btnbg text-brand-accent border-brand-accent hover:bg-brand-accent hover:text-white',
       ].join(' ')}
     >
-      <span className="font-medium">{label}</span>
-      {hint && <span className="ml-2 text-xs opacity-75">({hint})</span>}
+      {label}
     </button>
   );
 }

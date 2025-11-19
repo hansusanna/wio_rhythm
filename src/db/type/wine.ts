@@ -31,6 +31,8 @@ export interface Wine {
   labels?: LabelType[];    // NEW / EVENT / BEST
   rating?: number;         // 만족도 점수 (예: 4.5)
   reviewCount?: number;    // 리뷰 개수
+  stockLabel?: string;   // 매진임박
+  isMasterPick?: boolean; // 마스터특별추천
 }
 
 /*'내 취향 찾기' 퀴즈 답변과 와인 데이터를 매칭할 때 사용할 속성(key) 목록입니다

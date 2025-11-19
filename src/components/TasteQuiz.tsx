@@ -4,6 +4,7 @@ import type { QuizAnswers, AnswerKey, StepDef } from '@/db/type/quiz';
 import StepDefs from '@/db/quizDefs.json';
 import { QuestionGroup } from '@/components/QuestionGroup';
 import { QuizNavigation } from '@/components/QuizNavigation';
+import WineGlassIcon from '@/assets/wglass_ico.svg?react';
 
 type Props = {
   onCancelToMain: () => void;                 // "처음으로" 클릭
@@ -41,7 +42,7 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
   const resetToMain = () => onCancelToMain();
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-8">
+    <section className="mx-auto max-w-3xl px-4 py-6 text-black bg-white">
       <QuizHeader current={stepIdx + 1} total={STEP_DEFS.length} />
       <QuestionGroup
         step={step}
@@ -60,11 +61,11 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
 
 function QuizHeader({ current, total }: { current: number; total: number }) {
   return (
-    <header className="mb-6">
-      <p className="text-sm text-white/70">나에게 딱 맞는 와인이 궁금하다면?</p>
-      <div className="mt-2 text-3xl font-bold">
-        <span className="text-white">{current}</span>
-        <span className="text-white/60 text-xl align-top">/{total}</span>
+    <header>
+      <p className="mt-6 text-xl mb-10 flex items-center text-[#353535] font-normal"><WineGlassIcon className="mx-2 w-8 h-8" />나에게 딱 맞는 와인이 궁금하다면?</p>
+      <div className="mt-10 font-normal flex justify-center items-baseline">
+        <span className="text-2xl text-brand-accent">{current}</span>
+        <span className="text-sm">/{total}</span>
       </div>
     </header>
   );

@@ -9,9 +9,12 @@ interface NaviItem {
   lang?: 'ko' | 'en';
 }
 
+type HeaderProps = {
+  onStartQuiz?: () => void;
+};
 const base = import.meta.env.BASE_URL
 
-export default function Header() {
+export default function Header({ onStartQuiz }: HeaderProps) {
   const [ navidata, setNavi ] = useState<NaviItem[]>([]);
   const [ loading, setLoading ] = useState(true);
   const [ isMenuOpen, setMenuOpen ] = useState(false);
@@ -90,7 +93,11 @@ export default function Header() {
   const badgeLinks = new Set(['/mypick', '/subscribe']); 
 
   // 네비게이션 링크 렌더링 함수
-  const renderNavLinks = (isMobile: boolean = false, isWhiteBg: boolean = false) => (
+  const renderNavLinks = (
+    isMobile: boolean = false, 
+    isWhiteBg: boolean = false, 
+    onStartQuiz?: () => void
+  ) => (
     <ul className={`flex flex-col ${isMobile ? 'gap-1' : 'gap-1.5'}`}>
       {loading ? (
         Array.from({ length: 5 }).map((_, idx) => (
@@ -112,7 +119,19 @@ export default function Header() {
                 }`
               }
               // 모바일/태블릿에서만 링크 클릭 시 메뉴 닫기
-              onClick={isMobile ? () => setMenuOpen(false) : undefined}
+              onClick={(e) => {
+                const isMyPick = item.link === '/mypick';
+
+                if (isMyPick && onStartQuiz) {
+                  e.preventDefault();
+                  onStartQuiz();
+                }
+
+                // 모바일이면 메뉴 닫기
+                if (isMobile) {
+                  setMenuOpen(false);
+                }
+              }}
             >
               {({ isActive }) => (
                 <span className="relative inline-block">
@@ -178,7 +197,7 @@ export default function Header() {
             
             {/* 네비게이션*/}
             <nav className="overflow-y-auto">
-              {renderNavLinks(true, true)}
+              {renderNavLinks(true, true, onStartQuiz)}
             </nav>
           </div>
         </aside>
@@ -199,7 +218,7 @@ export default function Header() {
             </h2>
           </div>
           {/* 네비게이션 (어두운 배경 스타일) */}
-          <nav>{renderNavLinks(false, false)}</nav>
+          <nav>{renderNavLinks(false, false, onStartQuiz)}</nav>
         </div>
       </aside>
     </>

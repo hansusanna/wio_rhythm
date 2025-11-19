@@ -1,6 +1,32 @@
 
+import { useState } from 'react';
+import { MainEventBanner } from '@/components/MainEventBanner';
+import { MasterPickSection } from '@/components/MasterPick';
+import { Membership } from '@/db/bannerList';
+import type { Wine } from '@/db/type/wine';
 
-export default function Home({ onStart }: { onStart?: () => void }) {
+type HomeProps = {
+  onStart?: () => void;
+};
+
+// 위치별로 필터
+const topBanners = Membership.filter(
+  (b) => b.placement === 'home.top' && b.isActive
+);
+const bottomBanners = Membership.filter(
+  (b) => b.placement === 'home.bottom' && b.isActive
+);
+
+export default function Home({ onStart }: HomeProps) {
+  // 좋아요 상태는 Home에서 단일 관리
+  const [likedWineIds, setLikedWineIds] = useState<Wine['id'][]>([]);
+
+  const handleToggleLike = (id: Wine['id']) => {
+    setLikedWineIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
   return (
     <>
       {/* 배경 섹션 */}
@@ -21,7 +47,7 @@ export default function Home({ onStart }: { onStart?: () => void }) {
 
             <button
               type="button"
-              onClick={onStart} // 여기서 quiz 모드 오픈
+              onClick={onStart} // 여기서 
               className="w-[80%] max-w-[512px] inline-flex items-center justify-center
                 bg-brand-accent text-white text-findtit px-4 py-5 min-h-[44px] shadow-md
                 hover:opacity-95 active:opacity-90 transition wio-hero-cta"
@@ -32,11 +58,16 @@ export default function Home({ onStart }: { onStart?: () => void }) {
           </div>
         </div>
       </section>
-      {/* 스크롤 다운 → 실제 컨텐츠 시작 */}
-      <div className="bg-white text-neutral-900 p-4 sm:pt-6 sm:px-6 md:p-8">
-        {/* 여기부터 시안 섹션들 */}
-          {/* <HeroSlider /> */}
-         {/* <SubscribeForm /> */}
+      {/* 실제 컨텐츠 시작 */}
+      <div className="bg-white text-black p-4 sm:pt-6 sm:px-6 md:p-8">
+         {/* 멤버십 이벤트 배너 */}
+        <MainEventBanner banners={topBanners} />
+        <MasterPickSection 
+            likedWineIds={likedWineIds}
+            onToggleLike={handleToggleLike}
+          />
+        {/* 4) 하단 배너 (Premium) */}
+        <MainEventBanner banners={bottomBanners} />
       </div>
     </>
   );

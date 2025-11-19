@@ -11,33 +11,42 @@ export default function Layout() {
 
   const isQuizMode = viewMode === 'quiz';
 
+   // 헤더/네비에서 퀴즈 열 때 쓸 콜백
+  const handleStartQuiz = () => {
+    setQuizAnswers({});      // 필요하면 답 초기화
+    setViewMode('quiz');     // 퀴즈 모드 진입
+  };
+
   return (
-    // min-[840px]:justify-center   840 ~ 1023: 중앙 정렬
+    // min-[840px]:justify-center  840 ~ 1023: 중앙 정렬
     // PC (min-[840px]): gap-[clamp(80px,8vw,200px)] (PC에서만 Header와 Main 사이 간격)
-    <div className="min-h-screen bg-brand-primary text-white flex flex-col items-center
+    <div className="h-screen bg-brand-primary text-white flex flex-col items-center overflow-hidden
                    min-[840px]:flex-row min-[840px]:items-center min-[840px]:justify-center 
                    min-[840px]:gap-[clamp(48px,5vw,200px)]">
       
       {/* Header는 스스로 모바일/태블릿/PC 뷰를 결정함 */}
       <header
         className={
-          'stransition ' +
+          'transition ' +
           (isQuizMode ? 'opacity-40 pointer-events-none' : '')
         }
       >
-          <Header /> 
+         {/* 콜백을 내려보내기 */}
+        <Header onStartQuiz={handleStartQuiz} />
       </header>
 
       {/* 딤 레이어 (네비/배경용) */}
       {isQuizMode && (
-        <div className="pointer-events-none fixed inset-0 z-20 bg-black/30" />
+        <div className="pointer-events-none fixed inset-0 z-20 bg-black/50" />
       )}
 
       {/* 기본(모바일): w-full
         태블릿 (min-[641px]): w-full. (태블릿 헤더가 sticky + w-full 이므로 main도 w-full)
         PC (min-[840px]): w-[640px] (PC 레이아웃에서만 640px 너비 고정)
       */}
-      <main className={'w-full min-[840px]:w-[640px] ' + (isQuizMode ? 'relative z-30' : '')}>
+      <main className={'w-full h-full overflow-y-auto min-[840px]:w-[640px] ' + (isQuizMode ? 'relative z-30' : '')
+        +' [&::-webkit-scrollbar]:w-1.5' +' [&::-webkit-scrollbar-track]:bg-transparent' 
+      }>
         <MainSection
           viewMode={viewMode}
           setViewMode={setViewMode}

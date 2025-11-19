@@ -4,7 +4,7 @@ import type { Wine } from './wine';
 export const winelist: Wine[] = [
   {
     id: 'w1',
-    image: '/winelist/w1_white54_1.png',
+    image: '/images/winelist/w1_white54_1.png',
 
     // 퀴즈 매칭용
     type: 'white',
@@ -19,14 +19,14 @@ export const winelist: Wine[] = [
     nameEn: "Louis Latour, Grand Ardeche Chardonnay",
     originalPrice: 60000,
     salePrice: 53000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'EVENT'],
     rating: 4.5,
     reviewCount: 12,
   },
   // 나머지 와인도 같은 패턴으로 추가
   {
     id: 'w2',
-    image: '/winelist/w2_white54_2.png',
+    image: '/images/winelist/w2_white54_2.png',
 
     type: 'white',
     region: 'southamerica',
@@ -39,13 +39,15 @@ export const winelist: Wine[] = [
     nameEn: "Alpaca Moscato",
     originalPrice: 15000,
     salePrice: 12000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['EVENT', 'BEST'],
     rating: 4.2,
     reviewCount: 24,
+    stockLabel: '매진임박 마지막 5병',
+    isMasterPick: true,
   },
   {
     id: 'w3',
-    image: '/winelist/w3_white54_3.png',
+    image: '/images/winelist/w3_white54_3.png',
 
     type: 'white',
     region: 'oceania',
@@ -58,13 +60,13 @@ export const winelist: Wine[] = [
     nameEn: "Pierre Chainier Sancerre Blanc",
     originalPrice: 55000,
     salePrice: 55000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['BEST'],
     rating: 4.0,
     reviewCount: 16,
   },
   {
     id: 'w4',
-    image: '/winelist/w4_white54_4.png',
+    image: '/images/winelist/w4_white54_4.png',
 
     type: 'white',
     region: 'northamerica',
@@ -80,10 +82,11 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 3.9,
     reviewCount: 17,
+    isMasterPick: true,
   },
   {
     id: 'w5',
-    image: '/winelist/w5_white54_5.png',
+    image: '/images/winelist/w5_white54_5.png',
 
     type: 'white',
     region: 'southamerica',
@@ -96,13 +99,14 @@ export const winelist: Wine[] = [
     nameEn: "Mouloneau Pere Et Fils Chablis",
     originalPrice: 71000,
     salePrice: 71000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW'],
     rating: 4.5,
     reviewCount: 8,
+    stockLabel: '매진임박 마지막 5병'
   },
   {
     id: 'r1',
-    image: '/winelist/r1_red53_1.png',
+    image: '/images/winelist/r1_red53_1.png',
 
     type: 'red',
     region: 'southamerica',
@@ -115,13 +119,13 @@ export const winelist: Wine[] = [
     nameEn: "Harmonium Nero d Avola Sicilia",
     originalPrice: 36000,
     salePrice: 36000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['EVENT', 'BEST'],
     rating: 3.8,
     reviewCount: 28,
   },  
   {
     id: 'r2',
-    image: '/winelist/r2_red53_2.png',
+    image: '/images/winelist/r2_red53_2.png',
 
     type: 'red',
     region: 'europe',
@@ -134,13 +138,14 @@ export const winelist: Wine[] = [
     nameEn: "Red Angel On The Moonlight Pinot Nero",
     originalPrice: 55000,
     salePrice: 55000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'BEST'],
     rating: 3.9,
     reviewCount: 34,
+    stockLabel: '매진임박 마지막 5병'
   },
   {
     id: 'r3',
-    image: '/winelist/r3_red53_3.png',
+    image: '/images/winelist/r3_red53_3.png',
 
     type: 'red',
     region: 'europe',
@@ -153,13 +158,14 @@ export const winelist: Wine[] = [
     nameEn: "Château La France Delhomme Médoc",
     originalPrice: 63000,
     salePrice: 59000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'EVENT'],
     rating: 4.1,
     reviewCount: 8,
+    isMasterPick: true,
   },
   {
     id: 'r4',
-    image: '/winelist/r4_red53_4.png',
+    image: '/images/winelist/r4_red53_4.png',
 
     type: 'red',
     region: 'northamerica',
@@ -172,13 +178,13 @@ export const winelist: Wine[] = [
     nameEn: "Tenuta di Biserno",
     originalPrice: 125000,
     salePrice: 125000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['BEST'],
     rating: 4.5,
     reviewCount: 8,
   },
   {
     id: 'r5',
-    image: '/winelist/r5_red53_5.png',
+    image: '/images/winelist/r5_red53_5.png',
 
     type: 'red',
     region: 'europe',
@@ -194,10 +200,12 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 4.0,
     reviewCount: 24,
+    stockLabel: '매진임박 마지막 5병',
+    isMasterPick: true,
   },
   {
     id: 'o1',
-    image: '/winelist/o1_rose55_1.png',
+    image: '/images/winelist/o1_rose55_1.png',
 
     type: 'rose',
     region: 'europe',
@@ -213,10 +221,11 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 4.1,
     reviewCount: 21,
+    isMasterPick: true,
   },
   {
     id: 'o2',
-    image: '/winelist/o2_rose55_2.png',
+    image: '/images/winelist/o2_rose55_2.png',
 
     type: 'rose',
     region: 'europe',
@@ -232,10 +241,11 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 3.9,
     reviewCount: 32,
+    isMasterPick: true,
   },
   {
     id: 'o3',
-    image: '/winelist/o3_rose55_3.png',
+    image: '/images/winelist/o3_rose55_3.png',
 
     type: 'rose',
     region: 'oceania',
@@ -251,10 +261,11 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 4.0,
     reviewCount: 11,
+    isMasterPick: true,
   },
   {
     id: 'o4',
-    image: '/winelist/o4_rose55_4.png',
+    image: '/images/winelist/o4_rose55_4.png',
 
     type: 'rose',
     region: 'northamerica',
@@ -270,10 +281,11 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 3.8,
     reviewCount: 29,
+    isMasterPick: true,
   },
   {
     id: 'o5',
-    image: '/winelist/o5_rose55_5.png',
+    image: '/images/winelist/o5_rose55_5.png',
 
     type: 'rose',
     region: 'europe',
@@ -286,13 +298,14 @@ export const winelist: Wine[] = [
     nameEn: "Louis Bouillot Cremant De Bourgogne Rose",
     originalPrice: 35000,
     salePrice: 35000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'EVENT'],
     rating: 3.5,
     reviewCount: 22,
+    isMasterPick: true,
   },
   {
     id: 'c1',
-    image: '/winelist/c1_cham56_1.png',
+    image: '/images/winelist/c1_cham56_1.png',
 
     type: 'champagne',
     region: 'europe',
@@ -305,13 +318,15 @@ export const winelist: Wine[] = [
     nameEn: "Agusti Torello Mata Gran Reserva Barrica Cava",
     originalPrice: 58000,
     salePrice: 58000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['EVENT', 'BEST'],
     rating: 3.5,
     reviewCount: 17,
+    stockLabel: '매진임박 마지막 3병',
+    isMasterPick: true,
   },
   {
     id: 'c2',
-    image: '/winelist/c2_cham56_2.png',
+    image: '/images/winelist/c2_cham56_2.png',
 
     type: 'champagne',
     region: 'southamerica',
@@ -324,13 +339,14 @@ export const winelist: Wine[] = [
     nameEn: "Casillero del Diablo Devil's Brut",
     originalPrice: 44000,
     salePrice: 44000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'BEST'],
     rating: 3.5,
     reviewCount: 17,
+    isMasterPick: true,
   },
   {
     id: 'c3',
-    image: '/winelist/c3_cham56_3.png',
+    image: '/images/winelist/c3_cham56_3.png',
 
     type: 'champagne',
     region: 'europe',
@@ -349,7 +365,7 @@ export const winelist: Wine[] = [
   },
   {
     id: 'c4',
-    image: '/winelist/c4_cham56_4.png',
+    image: '/images/winelist/c4_cham56_4.png',
 
     type: 'champagne',
     region: 'europe',
@@ -362,13 +378,14 @@ export const winelist: Wine[] = [
     nameEn: "Louis Bouillot Crémant de Bourgogne Blanc de Noirs",
     originalPrice: 75000,
     salePrice: 71000,
-    labels: ['NEW', 'EVENT', 'BEST'],
+    labels: ['NEW', 'EVENT'],
     rating: 3.5,
     reviewCount: 17,
+    isMasterPick: true,
   },
   {
     id: 'c5',
-    image: '/winelist/c5_cham56_5.png',
+    image: '/images/winelist/c5_cham56_5.png',
 
     type: 'champagne',
     region: 'europe',
@@ -384,5 +401,6 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 4.0,
     reviewCount: 11,
+    isMasterPick: true,
   }
 ];

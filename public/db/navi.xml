@@ -1,14 +1,9 @@
 <navi>
 <menu>
     <item>   
-        <title>WIO-RTYTYM</title>
-        <link>/wiorhythm</link> 
+        <title>All Products</title>
+        <link>/products</link>
         <lang>en</lang>
-    </item>
-    <item>   
-        <title>B2B</title>
-        <link>/b2b</link>
-        <lang>en</lang> 
     </item>
     <item>   
         <title>맞춤구독</title>
@@ -21,19 +16,24 @@
         <lang>en</lang>
     </item>
     <item>   
-        <title>All Products</title>
-        <link>/products</link>
-        <lang>en</lang>
-    </item>
-    <item>   
         <title>Premium</title>
         <link>/premium</link> 
         <lang>en</lang>
     </item>
     <item>   
-        <title>Rhythm Table</title>
+        <title>B2B</title>
+        <link>/b2b</link>
+        <lang>en</lang> 
+    </item>
+    <item>   
+        <title>Wio Table</title>
         <link>/table</link>
         <lang>en</lang>
     </item>
+    <item>   
+        <title>WIO-RTYTYM</title>
+        <link>/wiorhythm</link> 
+        <lang>en</lang>
+    </item> 
 </menu>
 </navi>

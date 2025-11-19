@@ -17,11 +17,12 @@ export default {
         brand: {
           primary: '#370910', // mainColor
           accent: '#570E19',   // red
+          disabled: '#E2E2E2' , // 비활성화
           dark: '#220D0C',    // footer
         },
-        // 2.UI요소 색상(대체 불가능한 고유색상만)
+        // 2.UI요소 색상
         ui: {
-          backgroundalt: '#EAE3DC', // serveColor2 (따뜻한 회색)
+          btnbg: '#EAE3DC',  // 퀴즈버튼
           border: '#DDCFD1',       // barcolor
           gray: '#838383',         //gray (기본 gray와 톤이 다름)
         },
@@ -36,7 +37,8 @@ export default {
             DEFAULT: '#DC9BA5', // bestMenu
             light: '#EAC9CE',   // bestBadge
           },
-          rwine: '#292522',    // RwineBadge
+          rwine: '#292522', // RwineBadge
+          nextbtn: '#e2e2e2',
         },
       },
       fontFamily: {
