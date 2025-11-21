@@ -44,8 +44,8 @@ export default {
       fontFamily: {
         logo : ['"La Belle Aurore"', 'cursive'],
         mypick: ['"Kaushan Script"', 'system-ui', 'sans-serif', 'cursive'], // my pick
+        ko: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         en: ['Caudex', 'serif'],
-        ko: ['Pretendard', 'ui-sans-serif', 'system-ui'],
       },
       fontSize: {
         picktit:['128px', {

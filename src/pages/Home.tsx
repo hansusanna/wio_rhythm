@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { MainEventBanner } from '@/components/MainEventBanner';
 import { MasterPickSection } from '@/components/MasterPick';
+import { ThemeRecommendation } from '@/components/ThemeRecommend';
 import { Membership } from '@/db/bannerList';
 import type { Wine } from '@/db/type/wine';
 
@@ -66,7 +67,11 @@ export default function Home({ onStart }: HomeProps) {
             likedWineIds={likedWineIds}
             onToggleLike={handleToggleLike}
           />
-        {/* 4) 하단 배너 (Premium) */}
+        <ThemeRecommendation
+          likedWineIds={likedWineIds} 
+          onToggleLike={handleToggleLike} 
+        />
+        {/* 하단 배너(Premium) */}
         <MainEventBanner banners={bottomBanners} />
       </div>
     </>

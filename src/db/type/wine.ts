@@ -33,6 +33,7 @@ export interface Wine {
   reviewCount?: number;    // 리뷰 개수
   stockLabel?: string;   // 매진임박
   isMasterPick?: boolean; // 마스터특별추천
+  isOrganic?: boolean; // 유기농와인
 }
 
 /*'내 취향 찾기' 퀴즈 답변과 와인 데이터를 매칭할 때 사용할 속성(key) 목록입니다

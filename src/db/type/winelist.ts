@@ -22,6 +22,7 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT'],
     rating: 4.5,
     reviewCount: 12,
+    isOrganic: true,
   },
   // 나머지 와인도 같은 패턴으로 추가
   {
@@ -44,6 +45,7 @@ export const winelist: Wine[] = [
     reviewCount: 24,
     stockLabel: '매진임박 마지막 5병',
     isMasterPick: true,
+    isOrganic: true,
   },
   {
     id: 'w3',
@@ -63,6 +65,7 @@ export const winelist: Wine[] = [
     labels: ['BEST'],
     rating: 4.0,
     reviewCount: 16,
+    isOrganic: true,
   },
   {
     id: 'w4',
@@ -122,6 +125,7 @@ export const winelist: Wine[] = [
     labels: ['EVENT', 'BEST'],
     rating: 3.8,
     reviewCount: 28,
+    isOrganic: true,
   },  
   {
     id: 'r2',
@@ -181,6 +185,7 @@ export const winelist: Wine[] = [
     labels: ['BEST'],
     rating: 4.5,
     reviewCount: 8,
+    isOrganic: true,
   },
   {
     id: 'r5',
@@ -261,7 +266,7 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 4.0,
     reviewCount: 11,
-    isMasterPick: true,
+    isOrganic: true,
   },
   {
     id: 'o4',
@@ -301,7 +306,6 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT'],
     rating: 3.5,
     reviewCount: 22,
-    isMasterPick: true,
   },
   {
     id: 'c1',
@@ -322,7 +326,7 @@ export const winelist: Wine[] = [
     rating: 3.5,
     reviewCount: 17,
     stockLabel: '매진임박 마지막 3병',
-    isMasterPick: true,
+    isOrganic: true,
   },
   {
     id: 'c2',
@@ -362,6 +366,7 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT', 'BEST'],
     rating: 3.7,
     reviewCount: 16,
+    isOrganic: true,
   },
   {
     id: 'c4',
@@ -381,7 +386,6 @@ export const winelist: Wine[] = [
     labels: ['NEW', 'EVENT'],
     rating: 3.5,
     reviewCount: 17,
-    isMasterPick: true,
   },
   {
     id: 'c5',
