@@ -40,6 +40,12 @@ export default {
           rwine: '#292522', // RwineBadge
           nextbtn: '#e2e2e2',
         },
+        gold: {
+          100: '#F9F1D8', // 연한 골드
+          DEFAULT: '#D4AF37', // 정석 메탈릭 골드
+          500: '#D4AF37',
+          600: '#AA8C2C', // 어두운 골드
+        },
       },
       fontFamily: {
         logo : ['"La Belle Aurore"', 'cursive'],

@@ -11,17 +11,12 @@ export function normalizeAnswers(answers: QuizAnswers): NormalizedAnswers {
 
   // type
   if (answers.type) {
-    // champagne → sparkling으로 치환 (원하는 대로 수정 가능)
+    // champagne → sparkling으로 치환
     if (answers.type === 'champagne') {
       normalized.type = 'sparkling';
     } else {
       normalized.type = answers.type as Wine['type'];
     }
-  }
-
-  // region
-  if (answers.region) {
-    normalized.region = answers.region as Wine['region'];
   }
 
   // body / tannin / acidity / sweetness
@@ -47,23 +42,53 @@ export type ScoredWine = {
   matchedKeys: (keyof Wine)[];
 };
 
+const REGION_GROUPS: Record<string, string[]> = {
+  europe: ['france', 'italy', 'spain', 'germany', 'portugal'],
+  new_world: ['usa', 'chile', 'argentina', 'australia', 'new_zealand'],
+  asia: ['korea', 'japan'], // 필요하면 이런 식으로
+};
+
 export function getMatchedWines(
   answers: QuizAnswers,
   wines: Wine[],
 ): ScoredWine[] {
   const normalized = normalizeAnswers(answers);
+  const preferredType = normalized.type;         
+  const preferredRegionGroup = answers.region;    
 
   return wines
     .map((wine) => {
       let score = 0;
       const matchedKeys: (keyof Wine)[] = [];
 
+       if (preferredType) {
+        if (wine.type === preferredType) {
+          score += 40;           // 타입 일치 → 큰 가산점
+          matchedKeys.push('type');
+        } else {
+          score -= 10;           // 타입 다르면 약간 페널티
+        }
+      }
+      // 2) 지역 대분류 매칭 (퀴즈: 유럽 ←→ 와인: 국가/지역)
+      if (preferredRegionGroup && REGION_GROUPS[preferredRegionGroup]) {
+        const groupCountries = REGION_GROUPS[preferredRegionGroup];
+        // wine.region이나 wine.country 중 실제 쓰는 필드에 맞춰서 비교
+        const wineRegion = String(wine.region).toLowerCase();
+
+        if (groupCountries.includes(wineRegion)) {
+          score += 12;          // 지역 대분류 일치 → 가산점
+          matchedKeys.push('region');
+        }
+      }
+
       QUIZ_MATCH_KEYS.forEach((key) => {
+        if (key === 'type' || key === 'region') return; // 위에서 이미 처리
+
         const answerValue = normalized[key];
         if (!answerValue) return;
 
         if (wine[key] === answerValue) {
-          score += 2; // 일치하면 +2점
+          score += 4; // 일치하면 +4점 (기존 +2보다 살짝 상향)
           matchedKeys.push(key);
         }
       });

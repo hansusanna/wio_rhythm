@@ -1,6 +1,6 @@
 // src/components/ui/WineCard.tsx
 import type { Wine } from '@/db/type/wine';
-import { regionLabel, typeLabel } from '@/db/wineLabel';
+import { countryLabel, regionLabel, typeLabel } from '@/db/wineLabel';
 import type { LabelType } from '@/db/type/wine';
 
 type WineCardProps = {
@@ -21,8 +21,8 @@ function HeartIcon({ isLiked, className }: { isLiked: boolean; className?: strin
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
     className={className} 
     fill={isLiked ? 'currentColor' : 'none'} 
-    stroke="currentColor" stroke-width="2">
-      <path  stroke-linecap="round" stroke-linejoin="round" d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+    stroke="currentColor" strokeWidth="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
     </svg>
   );
 }
@@ -39,6 +39,7 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
     rating,
     reviewCount,
     region,
+    country,
     type,
     stockLabel,
   } = wine;
@@ -48,6 +49,9 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
 
   const hasDiscount =
     hasOriginal && hasSale && (salePrice as number) < (originalPrice as number);
+  
+  const displayPrice =
+  (hasSale ? salePrice : originalPrice) ?? 0;  
 
   const discountPercent =
     hasDiscount && originalPrice
@@ -112,11 +116,16 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
       </div>
       {/* 텍스트 영역 */}
       <div className="flex flex-1 flex-col gap-1 bg-white p-3">
-        {/* 상단 카테고리 (지역 / 타입) */}
+        {/* 상단 카테고리(나라/타입) */}
         <p className="text-sm text-[#838383] leading-none">
-          {region && type && (
+          {type && (
             <>
-              {regionLabel(region)} / {typeLabel(type)}
+              {country
+                ? countryLabel(country)      // 나라가 있으면 나라 표시
+                : region && regionLabel(region) // 없으면 기존 region 사용
+              }
+              {' / '}
+              {typeLabel(type)}
             </>
           )}
         </p>
@@ -133,23 +142,23 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
 
         {/* 가격 영역 */}
         <div className="mt-1 flex items-baseline gap-2 leading-none">
-          {hasOriginal && (
-            <span className="text-sm text-gray-400 line-through">
-              {originalPrice!.toLocaleString()}원
-            </span>
-          )}
-
-          {hasDiscount && discountPercent !== null && (
-            <span className="text-base font-normal text-red-500 leading-none">
-              -{discountPercent}%
-            </span>
-          )}
-
-          {hasSale && (
+           {/* 할인 있을 때만 정가 취소선 */}
+           {hasDiscount && (
+              <span className="text-sm text-gray-400 line-through">
+                {originalPrice!.toLocaleString()}원
+              </span>
+            )}
+            {/* 할인 있을 때만 할인 퍼센트 */}
+            {hasDiscount && discountPercent !== null && (
+              <span className="text-base font-normal text-red-500 leading-none">
+                -{discountPercent}%
+              </span>
+            )}
+            {/* 항상 마지막에 실제 표시 가격 */}
             <span className="text-lg font-semibold text-black leading-none">
-              {salePrice!.toLocaleString()}<span className="ml-1 text-sm font-normal">원</span>
+              {displayPrice.toLocaleString()}
+              <span className="ml-1 text-sm font-normal">원</span>
             </span>
-          )}
         </div>
 
        {(rating || reviewCount || stockLabel) && (

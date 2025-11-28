@@ -1,4 +1,4 @@
-// src/components/sections/MasterPick.tsx
+// src/components/MasterPick.tsx
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
@@ -52,7 +52,7 @@ export function MasterPickSection({ likedWineIds, onToggleLike }: Props) {
           onSwiper={setSwiperInstance}
           spaceBetween={16}
           slidesPerView={2.2}
-          // [수정] 슬라이드 변경 시 activeIndex + 1 로 현재 번호 갱신
+          // 슬라이드 변경 시 activeIndex + 1 로 현재 번호 갱신
           onSlideChange={(swiper) => {
             setCurrent(swiper.activeIndex + 1);
           }}

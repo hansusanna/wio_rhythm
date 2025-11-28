@@ -36,6 +36,36 @@ export function regionLabel(value?: string) {
       return value;
   }
 }
+
+export function countryLabel(value?: string) {
+  if (!value) return '';
+  switch (value) {
+    case 'france':
+      return '프랑스';
+    case 'italy':
+      return '이탈리아';
+    case 'spain':
+      return '스페인';
+    case 'germany':
+      return '독일';
+    case 'portugal':
+      return '포르투갈';
+    case 'usa':
+      return '미국';
+    case 'chile':
+      return '칠레';
+    case 'argentina':
+      return '아르헨티나';
+    case 'australia':
+      return '호주';
+    case 'new_zealand':
+      return '뉴질랜드';
+    case 'etc':
+      return '기타';
+    default:
+      return value;
+  }
+}
 // 종류 뱃지
 export const typeBadgeImages: Record<QuizAnswers['type'], string> = {
   red: '/images/badge/red.png',

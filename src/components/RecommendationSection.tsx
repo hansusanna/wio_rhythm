@@ -1,5 +1,5 @@
 // src/components/RecommendedSection.tsx
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import type { QuizAnswers } from '@/db/type/quiz';
 import type { Wine } from '@/db/type/wine';
 import { winelist } from '@/db/type/winelist';
@@ -11,7 +11,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper/types';
 import { SwiperControl } from '@/components/ui/SwiperControl';
 import 'swiper/css'; // Swiper 기본 CSS
- 
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Kakao: any;
+  }
+}
+
 type Props = {
   answers: QuizAnswers;
   onConfirm?: () => void;
@@ -21,6 +28,59 @@ type Props = {
 export function RecommendationSection({ answers, onConfirm, onGoHome }: Props) {
   const scored = getMatchedWines(answers, winelist);
   const matchedWines: Wine[] = scored.map((s) => s.wine);
+  // 카카오 SDK 초기화
+  useEffect(() => {
+    if (window.Kakao) {
+      // 중복 초기화 방지
+      if (!window.Kakao.isInitialized()) {
+        // 여기에 1단계에서 복사한 'JavaScript 키'를 넣으세요.
+        window.Kakao.init('a26c283956e6dd289ddaa3c2d8ee3e1b'); 
+      }
+    }
+  }, []);
+
+  // 카카오톡 공유 핸들러 함수
+  const handleShareKakao = () => {
+    if (!window.Kakao || !window.Kakao.isInitialized()) {
+      alert('카카오 SDK가 로드되지 않았습니다.');
+      return;
+    }
+
+    // 공유할 대표 와인(첫 번째 추천 와인)
+    const mainWine = matchedWines[0];
+    const dothomeDomain = 
+      import.meta.env.VITE_SITE_URL ?? 'http://wiorhythm.dothome.co.kr';
+    // 추천 리스트 id 배열
+    const listParam = matchedWines.map((w) => w.id).join(',');
+
+    // 결과 페이지 링크
+    const linkUrl = `${dothomeDomain}/result?main=${mainWine.id}&list=${listParam}`;
+
+    // 이미지 URL은 그대로 대표 와인 이미지 사용 이미지는 웹 URL
+    const imageUrl = `${dothomeDomain}${mainWine.image}`;
+
+    window.Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '나의 와인 취향 결과는?',
+        description: `당신에게 딱 맞는 와인은 '${mainWine.nameKo}' 입니다.`,
+        imageUrl: imageUrl, 
+        link: {
+          mobileWebUrl: linkUrl,
+          webUrl: linkUrl,
+        },
+      },
+      buttons: [
+        {
+          title: '결과 확인하기',
+          link: {
+            mobileWebUrl: linkUrl,
+            webUrl: linkUrl,
+          },
+        },
+      ],
+    });
+  };
 
   const [current, setCurrent] = useState(1);
   const totalCount = matchedWines.length;
@@ -108,7 +168,7 @@ export function RecommendationSection({ answers, onConfirm, onGoHome }: Props) {
           {/* 카카오톡 버튼 */}
           <button
             type="button"
-            // onClick={handleShareKakao} // (공유 기능은 별도 구현 필요)
+            onClick={handleShareKakao}
             className="flex-1 rounded-2xl bg-[#FEE500] py-3 text-xl font-semibold text-black hover:opacity-95 active:opacity-90"
           >
             카카오톡으로 보내기

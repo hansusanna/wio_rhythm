@@ -6,6 +6,20 @@ export type Region =
   | 'southamerica'
   | 'oceania'
   | 'etc';
+
+  export type Country =
+  | 'france'
+  | 'italy'
+  | 'spain'
+  | 'germany'
+  | 'portugal'
+  | 'usa'
+  | 'chile'
+  | 'argentina'
+  | 'australia'
+  | 'new_zealand'
+  | 'etc';
+
 export type Level = 'low' | 'medium' | 'high';
 
 export type LabelType = 'NEW' | 'EVENT' | 'BEST';
@@ -18,6 +32,7 @@ export interface Wine {
   // 퀴즈 매칭용 키
   type: WineType;
   region: Region;
+  country?: Country;
   body?: 'light' | 'medium' | 'full';
   tannin?: Level;
   acidity?: Level;

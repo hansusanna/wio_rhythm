@@ -9,6 +9,7 @@ export const winelist: Wine[] = [
     // 퀴즈 매칭용
     type: 'white',
     region: 'oceania',
+    country: 'new_zealand', 
     body: 'medium',
     tannin: 'low',
     acidity: 'high',
@@ -31,6 +32,7 @@ export const winelist: Wine[] = [
 
     type: 'white',
     region: 'southamerica',
+    country: 'chile',
     body: 'medium',
     tannin: 'low',
     acidity: 'low',
@@ -53,6 +55,7 @@ export const winelist: Wine[] = [
 
     type: 'white',
     region: 'oceania',
+    country: 'australia',
     body: 'medium',
     tannin: 'medium',
     acidity: 'high',
@@ -73,6 +76,7 @@ export const winelist: Wine[] = [
 
     type: 'white',
     region: 'northamerica',
+    country: 'usa',
     body: 'light',
     tannin: 'low',
     acidity: 'high',
@@ -93,6 +97,7 @@ export const winelist: Wine[] = [
 
     type: 'white',
     region: 'southamerica',
+    country: 'portugal',
     body: 'light',
     tannin: 'low',
     acidity: 'high',
@@ -113,6 +118,7 @@ export const winelist: Wine[] = [
 
     type: 'red',
     region: 'southamerica',
+    country: 'chile',
     body: 'full',
     tannin: 'high',
     acidity: 'low',
@@ -133,6 +139,7 @@ export const winelist: Wine[] = [
 
     type: 'red',
     region: 'europe',
+    country: 'italy',
     body: 'full',
     tannin: 'low',
     acidity: 'medium',
@@ -153,6 +160,7 @@ export const winelist: Wine[] = [
 
     type: 'red',
     region: 'europe',
+    country: 'spain',
     body: 'full',
     tannin: 'high',
     acidity: 'low',
@@ -173,6 +181,7 @@ export const winelist: Wine[] = [
 
     type: 'red',
     region: 'northamerica',
+    country: 'usa',
     body: 'full',
     tannin: 'medium',
     acidity: 'low',
@@ -193,6 +202,7 @@ export const winelist: Wine[] = [
 
     type: 'red',
     region: 'europe',
+    country: 'france',
     body: 'medium',
     tannin: 'medium',
     acidity: 'medium',
@@ -214,6 +224,7 @@ export const winelist: Wine[] = [
 
     type: 'rose',
     region: 'europe',
+    country: 'italy',
     body: 'light',
     tannin: 'low',
     acidity: 'medium',
@@ -234,6 +245,7 @@ export const winelist: Wine[] = [
 
     type: 'rose',
     region: 'europe',
+    country: 'spain',
     body: 'medium',
     tannin: 'low',
     acidity: 'high',
@@ -254,6 +266,7 @@ export const winelist: Wine[] = [
 
     type: 'rose',
     region: 'oceania',
+    country: 'new_zealand',
     body: 'light',
     tannin: 'low',
     acidity: 'high',
@@ -274,6 +287,7 @@ export const winelist: Wine[] = [
 
     type: 'rose',
     region: 'northamerica',
+    country: 'usa',
     body: 'light',
     tannin: 'low',
     acidity: 'medium',
@@ -294,6 +308,7 @@ export const winelist: Wine[] = [
 
     type: 'rose',
     region: 'europe',
+    country: 'germany',
     body: 'medium',
     tannin: 'low',
     acidity: 'high',
@@ -313,6 +328,7 @@ export const winelist: Wine[] = [
 
     type: 'champagne',
     region: 'europe',
+    country: 'france',
     body: 'medium',
     tannin: 'low',
     acidity: 'medium',
@@ -334,6 +350,7 @@ export const winelist: Wine[] = [
 
     type: 'champagne',
     region: 'southamerica',
+    country: 'chile',
     body: 'medium',
     tannin: 'low',
     acidity: 'medium',
@@ -354,6 +371,7 @@ export const winelist: Wine[] = [
 
     type: 'champagne',
     region: 'europe',
+    country: 'spain',
     body: 'medium',
     tannin: 'low',
     acidity: 'high',
@@ -374,6 +392,7 @@ export const winelist: Wine[] = [
 
     type: 'champagne',
     region: 'europe',
+    country: 'italy',
     body: 'light',
     tannin: 'low',
     acidity: 'high',
@@ -393,6 +412,7 @@ export const winelist: Wine[] = [
 
     type: 'champagne',
     region: 'europe',
+    country: 'germany',
     body: 'full',
     tannin: 'low',
     acidity: 'high',
