@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "questions": [
+      {
+        "key": "type",
+        "title": "어떤 종류를 원하시나요?",
+        "options": [
+          { "value": "red", "label": "레드" },
+          { "value": "white", "label": "화이트" },
+          { "value": "rose", "label": "로제" },
+          { "value": "champagne", "label": "샴페인" },
+          { "value": "sparkling", "label": "스파클링" }
+        ]
+      },
+      {
+        "key": "region",
+        "title": "어떤 지역의 와인이 좋을까요?",
+        "options": [
+          { "value": "europe", "label": "유럽" },
+          { "value": "northamerica", "label": "북미" },
+          { "value": "southamerica", "label": "남미" },
+          { "value": "etc", "label": "그 외" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "questions": [
+      {
+        "key": "body",
+        "title": "바디감은 어느 정도가 좋을까요?",
+        "hints": [
+         "* 라이트: 가볍고 산뜻하게 느껴지고, 목넘김이 부드러움",
+         "* 풀바디: 진하고 농축된 맛으로, 목넘김이 무거움"
+        ],
+        "options": [
+          { "value": "light", "label": "라이트" },
+          { "value": "medium", "label": "보통" },
+          { "value": "full", "label": "풀바디" }
+        ]
+      },
+      {
+        "key": "tannin",
+        "title": "타닌감은 어느 정도가 좋을까요?",
+        "hints": [
+         "* 약함: 부드럽고 떫은 맛이 거의 없음",
+         "* 강함: 입안이 살짝 마르고 쌉쌀한 느낌"
+        ],
+        "options": [
+          { "value": "low", "label": "약함" },
+          { "value": "medium", "label": "보통" },
+          { "value": "high", "label": "강함" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "questions": [
+      {
+        "key": "acidity",
+        "title": "산미는 어느 정도가 좋을까요?",
+        "hints": [
+         "* 약함: 부드럽고 신맛이 거의 없음",
+         "* 강함: 상큼하고 생동감 있는 맛"
+        ],
+        "options": [
+          { "value": "low", "label": "약함" },
+          { "value": "medium", "label": "보통" },
+          { "value": "high", "label": "강함" }
+        ]
+      },
+      {
+        "key": "sweetness",
+        "title": "당도는 어느 정도가 좋을까요?",
+        "hints": [
+         "* 낮음: 단맛이 거의 없고 드라이한 맛",
+         "* 높음: 달콤하고 부드러운 맛"
+        ],
+        "options": [
+          { "value": "low", "label": "낮음" },
+          { "value": "medium", "label": "보통" },
+          { "value": "high", "label": "높음" }
+        ]
+      }
+    ]
+  }
+]

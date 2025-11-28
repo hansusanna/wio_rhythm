@@ -1,0 +1,42 @@
+/* 메뉴강조동그라미 */
+.menuRound{ color: #fff !important;}
+
+/* 취향찾기버튼 */
+.redButton{ background-color: #570e19 !important; border-radius: 0.3rem !important; }
+
+/* 노란버튼 */
+.yelButton{background-color: #FEE500 !important; border-radius: 0.75rem !important;}
+
+/* 폼버튼 */
+.formButton{ background-color: rgb(234 227 220); border-color: rgb(87 14 25 / 30%) !important; 
+    border-width: 2px !important; border-radius: 0.75rem !important; max-width: 110px !important; }
+.formButton:hover{ color: #fff; background-color: #570e19 !important; }
+.formButton input:checked + .formButton {  color: #fff; background-color: #570e19 !important; }
+
+/* 상품배지 */
+.label.NEW {background-color: #cbab85 !important;}
+.label.EVENT { background-color: #B6D3EF !important;}
+.label.BEST { background-color: #EAC9CE !important; }
+
+/* 매진임박배지 */
+.soldBadge{ background-color: rgb(138 15 41) !important; color: #fff !important;}
+
+/* 상품배경 */
+.prodBg{ background-color: #F0F0F0 !important;}
+
+/* 메인배경 */
+.mainBg{ background-color: #370910 !important; }
+
+/* 메인글자색상 */
+.mainText{ color: #fff !important}
+
+/* 테마#탭 */
+    /* 활성 상태 */
+    .themeTab.active {background-color: #570E19 !important; color: #fff !important; border-color: #570E19 !important; }  
+
+    /* 비활성 상태 */
+    .themeTab.inactive {background-color: #fff !important; color: #570E19 !important; border-color: #570E19 !important; }
+    
+    /* 비활성 상태 hover */
+    .themeTab.inactive:hover { background-color: #570E19 !important; color: #fff !important; }
+

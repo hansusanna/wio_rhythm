@@ -1,0 +1,46 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [],
+  theme: {
+    // Tailwind의 기본 브레이크포인트를 오버라이드하여 Figma의 분기점에 맞춥니다.
+    // Tailwind는 'min-width'를 기준으로 합니다.
+    screens: {
+      // Figma의 '375' 모드는 기본값(base)으로 간주하고,
+      // '768'부터 Tailwind의 'sm' 등으로 매핑합니다.
+      'sm': '768px',    // Tablet
+      'md': '1080px',   // Laptop
+      'lg': '1440px',   // Desktop
+    },
+    extend: {
+      // 1. Spacing (여백) 변수 적용
+      // Tailwind의 기본 spacing scale을 확장하여 Figma의 'spacing/' 값을 추가합니다.
+      // Tailwind에서는 기본적으로 4의 배수를 사용하지만, 여기서는 Figma 값을 그대로 따릅니다.
+      spacing: {
+        'xl': 'var(--spacing-xl)', // 1440px 기준 64px
+        'lg': 'var(--spacing-lg)', // 1440px 기준 32px
+        'md': 'var(--spacing-md)', // 1440px 기준 16px
+        'sm': 'var(--spacing-sm)', // 1440px 기준 8px
+      },
+
+      // 2. Font Size (글꼴 크기) 및 Line Height (행 높이) 변수 적용
+      // Tailwind의 기본 fontSize scale을 확장하여 Figma의 'typo/' 값을 추가합니다.
+      // Tailwind는 fontSize 설정 시 [size, { lineHeight, letterSpacing }] 배열을 사용합니다.
+      fontSize: {
+        // 타이틀 (Title)
+        'title': ['var(--typo-title-size)', {
+          lineHeight: 'var(--typo-title-lineheight)',
+        }],
+        // 바디 (Body)
+        'body': ['var(--typo-body-size)', {
+          lineHeight: 'var(--typo-body-lineheight)',
+        }],
+      },
+
+      // 3. Grid Columns (컬럼 수)는 Tailwind에서 직접 사용하기 어렵기 때문에,
+      // CSS 변수 또는 유틸리티로 매핑하는 것이 일반적입니다.
+      // 여기서는 Custom CSS 변수를 사용하는 것으로 가정합니다.
+      // Tailwind의 기본 grid-cols를 오버라이드 하지 않고 CSS 변수를 참고하여 구현합니다.
+    },
+  },
+  plugins: [],
+}

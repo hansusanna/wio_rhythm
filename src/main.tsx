@@ -1,0 +1,19 @@
+import { createRoot } from 'react-dom/client'
+import { Helmet, HelmetProvider  } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom'
+import './index.css'
+import App from './App'   // Tailwind + 기본 스타일
+import './styles/pm-overrides.css' // ← 기획자 전용, 항상 마지막에
+
+createRoot(document.getElementById('root')!).render(
+   <HelmetProvider>
+    <BrowserRouter>
+      <Helmet>
+        <title>WioRhythm - 와인 구독 서비스</title>
+        <meta name="description" content="프리미엄 와인을 매달 집에서 만나보세요." />
+      </Helmet>
+      <App />
+      {/* ... 페이지 컨텐츠 ... */}
+    </BrowserRouter>
+   </HelmetProvider>    
+)

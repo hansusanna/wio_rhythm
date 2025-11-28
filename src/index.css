@@ -1,0 +1,26 @@
+/* --- Tailwind directives --- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*순수 HTML 태그(body, h1...)의 기본 스타일*/
+@layer base {
+  body{
+    font-family: var(--font-body-family);
+    font-size: var(--ty-body-size);
+    line-height: var(--ty-body-lineh);
+    margin: 0;
+    padding: 0;
+  }
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-weight: 600;
+  }
+  p, label, button, input { font-size: 1rem; line-height: 1.5; }
+
+/* 한국어 기본 */
+:lang(ko) { font-family: theme('fontFamily.ko'), sans-serif;}
+/* 영어기본 */
+:lang(en) { font-family: theme('fontFamily.en'), serif;}
+
+}

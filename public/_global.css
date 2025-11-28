@@ -1,0 +1,89 @@
+
+
+:root {
+  /* Default Mode (375px) - Mobile */
+  --font-body-family : 'Caudex','Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ty-tit-size: 24px;
+  --ty-sub-size: 18px;
+  --ty-navi-size: 16px;
+  --ty-h2-size: 28px;
+  --ty-sctit-size: 36px;
+  --ty-body-size: 14px;
+  --ty-banner-size: 52px;  
+  --ty-findtit-size:24px;  
+  --ty-tit-lineh: 32px;
+  --ty-body-lineh: 20px;
+  --sp-xl: 24px;
+  --sp-lg: 12px;
+  --sp-md: 8px;
+  --sp-sm: 4px;
+  --grid-columns: 1; /* Tailwind CSS에서 직접 사용하기 어렵지만, 참고용으로 정의 */
+}
+
+
+@media (min-width:768px) {
+
+  :root {
+    --ty-tit-size: 28px;
+    --ty-sub-size: 18px;
+    --ty-navi-size: 16px;
+    --ty-h2-size: 24px;
+    --ty-sctit-size: 32px;
+    --ty-body-size: 14px;
+    --ty-banner-size: 52px;  
+    --ty-findtit-size:26px;
+    --ty-tit-lineh: 36px;
+    --ty-body-lineh: 20px;
+    --sp-xl: 32px;
+    --sp-lg: 16px;
+    --sp-md: 8px;
+    --sp-sm: 4px;
+    --grid-columns: 2;
+  }
+}
+
+/*1080이상일때 변수 */
+@media (min-width: 1080px) {
+  :root {
+    --ty-tit-size: 36px;
+    --ty-sub-size: 22px;
+    --ty-navi-size: 18px;
+    --ty-h2-size: 26px;
+    --ty-sctit-size: 34px;
+    --ty-body-size: 16px;
+    --ty-banner-size: 58px;  
+    --ty-findtit-size:26px;
+    --ty-tit-lineh: 44px;
+    --ty-body-lineh: 24px;
+    --sp-xl: 48px;
+    --sp-lg: 24px;
+    --sp-md: 12px;
+    --sp-sm: 8px;
+    --grid-columns: 3;
+  }
+}
+
+/* Desktop (1440px)*/
+@media (min-width:1440px) {
+  :root {
+    --ty-tit-size: 40px;
+    --ty-sub-size: 24px;
+    --ty-navi-size: 20px;
+    --ty-h2-size: 28px;
+    --ty-sctit-size: 36px;
+    --ty-body-size: 18px;
+    --ty-banner-size: 60px;
+    --ty-findtit-size:26px;
+    --ty-tit-lineh: 56px;
+    --ty-body-lineh: 28px;
+    --sp-xl: 64px;
+    --sp-lg: 32px;
+    --sp-md: 16px;
+    --sp-sm: 8px;
+    --grid-columns: 4;
+    --main-w: 640px;  /* 메인 */
+    --gap-x: 200px;   /* 사이 간격 */
+    --aside-w: 590px;  /* 좌측 메뉴 */
+    --main-left: calc(50% - (var(--main-w) / 2));
+  }
+}
