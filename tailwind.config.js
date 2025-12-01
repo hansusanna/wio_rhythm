@@ -80,6 +80,7 @@ export default {
   
       letterspacing: {
         tight: '-0.01em',
+        tight192: '-1.92px',
       },
       borderRadius: {
         xl2: '1rem', // 카드/버튼 둥근 모서리 맛

@@ -65,7 +65,7 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
 
   return (
     <article className={`flex flex-col ${className}`}>
-      <div className="relative bg-[#F0F0F0] p-4 pb-0">
+      <div className="relative bg-[#F0F0F0] p-5 pb-0">
         {/* 와인 이미지 */}
         <div className="relative mb-3 flex items-center justify-center">
           <img
@@ -75,7 +75,7 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
           />
         </div>
         {/* 상단 라벨 & 찜버튼 */}
-        <div className="absolute top-0 left-0 right-0 flex items-start justify-between p-2">
+        <div className="absolute top-0 left-0 right-0 flex items-start justify-between p-4">
           <div className="flex flex-col gap-1">
             {labels?.map((label) => (
               <span

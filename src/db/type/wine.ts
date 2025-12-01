@@ -28,6 +28,7 @@ export interface Wine {
   // 공통 키
   id: string | number;
   image: string; 
+  personalityTypeCode?: string;
 
   // 퀴즈 매칭용 키
   type: WineType;

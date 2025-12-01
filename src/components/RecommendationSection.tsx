@@ -1,5 +1,6 @@
 // src/components/RecommendedSection.tsx
 import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { QuizAnswers } from '@/db/type/quiz';
 import type { Wine } from '@/db/type/wine';
 import { winelist } from '@/db/type/winelist';
@@ -25,7 +26,9 @@ type Props = {
   onGoHome: () => void;
 };
 
-export function RecommendationSection({ answers, onConfirm, onGoHome }: Props) {
+export function RecommendationSection({ answers, onGoHome }: Props) {
+  const navigate = useNavigate();
+
   const scored = getMatchedWines(answers, winelist);
   const matchedWines: Wine[] = scored.map((s) => s.wine);
   // 카카오 SDK 초기화
@@ -106,6 +109,10 @@ export function RecommendationSection({ answers, onConfirm, onGoHome }: Props) {
   const isBeginning = current === 1;
   const isEnd = current === totalCount;
 
+  const handleSubscribeClick = () => {
+    navigate('/subscription', { state: { matchedWines } });
+  };
+
   return (
     <section>
       {/* 상단 헤더 */}
@@ -155,12 +162,11 @@ export function RecommendationSection({ answers, onConfirm, onGoHome }: Props) {
             total={totalCount}
           />
       </div>
-      {/* 구독하기 / 카카오톡 버튼 Row */}
       <div className="mt-8 flex w-full flex-col items-center gap-2">       
         <div className="flex w-full items-center gap-2">
           <button
             type="button"
-            onClick={onConfirm}
+            onClick={handleSubscribeClick}
             className="flex-1 rounded-2xl bg-brand-accent py-3 text-xl font-semibold text-white hover:opacity-95 active:opacity-90"
           >
             구독하기

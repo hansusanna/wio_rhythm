@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from '@/Layout' 
 import Home from '@/pages/Home'
 import ResultPage from '@/pages/ResultPage'; 
+import SubscriptionPage from '@/pages/SubscriptionPage';
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
           {/* <Route path="/mypick" element={<MyPick />} /> */}
         </Route>
         {/* 공유하기후 추천리스트*/}
-        <Route path="/result" element={<ResultPage />} />  
+        <Route path="/result" element={<ResultPage />} />
+        <Route path="/subscription" element={<SubscriptionPage />} />
       </Routes>
   )
 }
