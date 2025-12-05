@@ -7,10 +7,10 @@ import { winelist } from '@/db/type/winelist';
 import { getMatchedWines } from '@/db/quizMatch';
 import { WineCard } from '@/components/ui/WineCard';
 import { TasteSummary } from './TasteSummary';
-import WineGlassIcon from '@/assets/wglass_ico.svg?react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper/types';
 import { SwiperControl } from '@/components/ui/SwiperControl';
+import { BottomActions } from '@/components/ui/BottomActions';
 import 'swiper/css'; // Swiper 기본 CSS
 
 declare global {
@@ -116,19 +116,14 @@ export function RecommendationSection({ answers, onGoHome }: Props) {
   return (
     <section>
       {/* 상단 헤더 */}
-      <header className="mb-4 text-center">
-        <p className="mt-4 text-xl mb-10 flex items-center text-[#353535] font-normal"><WineGlassIcon className="mx-2 w-8 h-8" />나에게 딱 맞는 와인이 궁금하다면?</p>
+      <header className="mb-2 text-left text-brand-accent md:mb-6">
+          <h1 className="text-4xl font-bold md:text-5xl"><span className='italic font-en tracking-tight192'>My Pick</span><span className="pl-2 text-xl md:text-2xl font-ko font-medium">당신만을 위한 와인</span> 
+          </h1>
       </header>
 
       {/* 질문 선택 결과 요약 + 그래프 */}
       <TasteSummary answers={answers} />
-
-      {/* 타이틀 */}
-      <div className="mt-12 mb-4 text-center">
-        <h2 className="text-3xl font-normal text-black">내 취향에 꼭 맞는 와인</h2>
-        <p className="mt-5 text-base text-black">찾았다! 나만의 보석</p>
-      </div>
-
+      
       {/* 와인 카드 그리드 */}
      <div className="px-1">
        <Swiper
@@ -163,31 +158,12 @@ export function RecommendationSection({ answers, onGoHome }: Props) {
           />
       </div>
       <div className="mt-8 flex w-full flex-col items-center gap-2">       
-        <div className="flex w-full items-center gap-2">
-          <button
-            type="button"
-            onClick={handleSubscribeClick}
-            className="flex-1 rounded-2xl bg-brand-accent py-3 text-xl font-semibold text-white hover:opacity-95 active:opacity-90"
-          >
-            구독하기
-          </button>
-          {/* 카카오톡 버튼 */}
-          <button
-            type="button"
-            onClick={handleShareKakao}
-            className="flex-1 rounded-2xl bg-[#FEE500] py-3 text-xl font-semibold text-black hover:opacity-95 active:opacity-90"
-          >
-            카카오톡으로 보내기
-          </button>       
-        </div>
-        {/* 처음으로 가기 버튼 */}
-        <button
-          type="button"
-          onClick={onGoHome}
-          className="text-xl text-gray-500 hover:text-gray-800"
-        >
-          처음으로 가기
-        </button>
+         <BottomActions 
+          onSubscribe={handleSubscribeClick}
+          onShare={handleShareKakao}
+          onGoHome={onGoHome}
+          shareLabel="카카오톡 결과 남기기" // 여기만 라벨 다르게 설정
+        />
       </div>
     </section>
   );

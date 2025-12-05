@@ -8,12 +8,19 @@ type WineCardProps = {
   isLiked?: boolean;
   onToggleLike?: (id: Wine['id']) => void;
   className?: string;
+  showPrice?: boolean;
 };
 
 const labelTextMap: Record<LabelType, string> = {
   NEW: 'NEW',
   EVENT: 'EVENT',
   BEST: 'BEST',
+};
+
+const labelColorMap: Record<LabelType, string> = {
+  NEW: 'bg-semantic-new',
+  EVENT: 'bg-semantic-event-light',
+  BEST: 'bg-semantic-best-light',
 };
 
 function HeartIcon({ isLiked, className }: { isLiked: boolean; className?: string }) {
@@ -27,7 +34,13 @@ function HeartIcon({ isLiked, className }: { isLiked: boolean; className?: strin
   );
 }
 
-export function WineCard({ wine, isLiked = false, onToggleLike, className }: WineCardProps) {
+export function WineCard({
+  wine,
+  isLiked = false,
+  onToggleLike,
+  className,
+  showPrice = true,
+}: WineCardProps) {
   const {
     id,
     image,
@@ -65,7 +78,7 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
 
   return (
     <article className={`flex flex-col ${className}`}>
-      <div className="relative bg-[#F0F0F0] p-5 pb-0">
+      <div className="relative bg-ui-cardBg p-5 pb-0">
         {/* 와인 이미지 */}
         <div className="relative mb-3 flex items-center justify-center">
           <img
@@ -80,15 +93,7 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
             {labels?.map((label) => (
               <span
                 key={label}
-                className="inline-block px-1 leading-relaxed text-[11px] font-normal text-black text-center"
-                style={{
-                  backgroundColor:
-                    label === 'NEW'
-                      ? '#CBAB85'
-                      : label === 'EVENT'
-                      ? '#B6D3EF'
-                      : '#EAC9CE',
-                }}
+                className={`inline-block px-1 leading-relaxed text-[11px] font-normal text-black text-center ${labelColorMap[label]}`}
               >
                 {labelTextMap[label] ?? label}
               </span>
@@ -112,12 +117,11 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
             />
           </button>
         </div>
-        
       </div>
       {/* 텍스트 영역 */}
-      <div className="flex flex-1 flex-col gap-1 bg-white p-3">
+      <div className="flex flex-1 flex-col bg-white p-3 mt-1">
         {/* 상단 카테고리(나라/타입) */}
-        <p className="text-sm text-[#838383] leading-none">
+        <p className="text-sm text-ui-gray font-normal leading-none pb-2">
           {type && (
             <>
               {country
@@ -131,20 +135,21 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
         </p>
 
         {/* 국문 이름 */}
-        <h3 className="line-clamp-2 text-lg font-normal text-black leading-normal">
+        <h3 className="truncate text-lg font-normal text-black leading-none pb-2">
           {nameKo}
         </h3>
 
         {/* 영문 이름 */}
         {nameEn && (
-          <p className="text-sm text-black font-en leading-snug">{nameEn}</p>
+          <p className="truncate text-sm text-black font-en leading-none pb-2.5">{nameEn}</p>
         )}
 
         {/* 가격 영역 */}
-        <div className="mt-1 flex items-baseline gap-2 leading-none">
-           {/* 할인 있을 때만 정가 취소선 */}
-           {hasDiscount && (
-              <span className="text-sm text-gray-400 line-through">
+        {showPrice && (
+          <div className="flex items-baseline gap-2 leading-non pb-2.5">
+            {/* 할인 있을 때만 정가 취소선 */}
+            {hasDiscount && (
+              <span className="text-sm text-ui-gray line-through">
                 {originalPrice!.toLocaleString()}원
               </span>
             )}
@@ -159,30 +164,31 @@ export function WineCard({ wine, isLiked = false, onToggleLike, className }: Win
               {displayPrice.toLocaleString()}
               <span className="ml-1 text-sm font-normal">원</span>
             </span>
-        </div>
+          </div>
+        )}
 
        {(rating || reviewCount || stockLabel) && (
-          <div className="mt-1 flex items-center gap-2 leading-none"> {/* mt-1.5로 통일, gap-2로 간격 */}           
+          <div className="flex items-center gap-2 leading-none">           
             {/* 평점 / 리뷰 */}
             {(rating || reviewCount) && (
-              <div className="flex items-center gap-1 text-xs text-gray-500">
+              <div className="flex items-center gap-1 text-sm text-ui-gray leading-none">
                 {rating && (
                   <>
-                    <span className="text-[13px] text-amber-400">★</span>
+                    <span className="text-[13px] text-amber-400 leading-none">★</span>
                     <span>{rating.toFixed(1)}</span>
                   </>
                 )}
                 {reviewCount !== undefined && (
-                  <span className="text-gray-400">
+                  <span className="leading-none">
                     ({reviewCount.toLocaleString()})
                   </span>
                 )}
               </div>
             )}
-            {/* 매진임박 뱃지 (stockLabel이 있을 때만 렌더링) */}
+            {/* 매진임박 뱃지*/}
             {stockLabel && (
               <div> {/* 부모의 gap-2로 인해 자동 간격 조절됨 */}
-                <span className="rounded-md bg-[#8A0F29] px-2 py-1 text-xs font-bold text-white">
+                <span className="rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white">
                   {stockLabel}
                 </span>
               </div>

@@ -53,7 +53,7 @@ export default function Layout() {
           quizAnswers={quizAnswers}
           setQuizAnswers={setQuizAnswers}
         />
-        <footer className="mt-12 md:mt-16 lg:mt-20">
+        <footer className="mt-12 md:mt-20">
           <Foot />
         </footer>
       </main>

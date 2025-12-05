@@ -1,4 +1,4 @@
-// src/components/result/TasteSummary.tsx
+// src/components/TasteSummary.tsx
 import type { QuizAnswers } from '@/db/type/quiz';
 import { TasteBar } from './TasteBar';
 import { typeLabel, regionLabel, typeBadgeImages, regionCountryBadges } from '@/db/wineLabel';
@@ -10,8 +10,8 @@ type Props = {
 export function TasteSummary({ answers }: Props) {
 
   return (
-    <div className="mb-8 px-10 py-5 md:px-6 md:py-6 text-base rounded-2xl bg-neutral-50">
-      <div className="mb-4 flex flex-col items-center gap-4 text-gray-700">
+    <div className="mb-8 px-10 py-5 md:px-6 md:py-6 text-base rounded-md bg-ui-cardBg">
+      <div className="mb-4 flex flex-col items-center gap-4 text-ui-gray">
         {/* 종류 */}
         <div className="flex w-full flex-row items-center">
           <span className="w-16 mr-2 font-semibold">종 류</span>

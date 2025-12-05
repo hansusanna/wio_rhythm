@@ -10,7 +10,7 @@ export default function QuizResults({
   onBackToFirst: () => void;
 }) {
   return (
-    <section className="mx-auto px-4 py-8 bg-white">
+    <div className="mx-auto px-4 py-8 bg-white">
       <RecommendationSection answers={answers} onGoHome={onBackToFirst}/>
 
       <div className="mt-8 flex justify-end">
@@ -21,6 +21,6 @@ export default function QuizResults({
           첫페이지로 돌아가기
         </button>
       </div>
-    </section>
+    </div>
   );
 }

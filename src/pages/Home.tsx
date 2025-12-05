@@ -35,7 +35,7 @@ export default function Home({ onStart }: HomeProps) {
         {/* 메인 640px 기준 배경 컨테이너 */}
         <div className="w-[640px] max-w-[90vw] h-full bg-[url('/images/mainbg.jpg')] bg-cover bg-center flex items-center justify-center">
           {/* 콘텐츠 박스: 절대포지션 없이 중앙정렬 */}
-          <div className="flex flex-col items-center justify-center text-center h-full py-[clamp(40px,8vh,96px)]">
+          <div className="flex flex-col items-center justify-start text-center p-[clamp(40px,8vh,96px)] gap-6">
             {/* 타이틀 */}
             <p id="mypick-heading" data-animate="mypick" className="font-mypick text-picktit font-nomal select-none wio-hero-title">
               My Pick

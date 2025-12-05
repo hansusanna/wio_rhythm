@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { ViewMode, QuizAnswers } from '@/db/type/quiz';
 import Home from '@/pages/Home';
 import TasteQuiz from '@/components/TasteQuiz';
@@ -16,8 +17,19 @@ export default function MainSection({
   quizAnswers,
   setQuizAnswers,
 }: Props) {
+
+   useEffect(() => {
+    if (viewMode === 'main') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [viewMode]);
+
+  const backToMain = () => {
+    setViewMode('main');
+  };
+
   return (
-    <section className="mx-auto max-w-6xl h-[100svh]">
+    <div className="mx-auto max-w-4xl h-[100svh]">
       {viewMode === 'main' && (
         <Home onStart={() => setViewMode('quiz')} />
       )}
@@ -35,9 +47,9 @@ export default function MainSection({
       {viewMode === 'results' && (
         <QuizResults
           answers={quizAnswers}
-          onBackToFirst={() => setViewMode('main')}
+          onBackToFirst={backToMain}
         />
       )}
-    </section>
+    </div>
   );
 }

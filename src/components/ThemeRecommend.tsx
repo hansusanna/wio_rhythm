@@ -107,7 +107,7 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
                 onSwiper={setSwiperInstance}
                 spaceBetween={16}
                 slidesPerView={2.2}
-                // [수정] 페이지네이션 로직 단순화
+                // 페이지네이션 로직 단순화
                 onSlideChange={(swiper) => {
                 setCurrent(swiper.activeIndex + 1);
                 }}

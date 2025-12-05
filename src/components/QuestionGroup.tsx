@@ -41,27 +41,25 @@ function Question({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="border-b border-gray-300 pt-6 text-center pb-2.5">
+    <div className="border-b border-border-default pt-lg text-center pb-md">
       <div className="mb-4">
-        <h3 className="pb-5 text-3xl font-semibold">{title}</h3>
+        <h3 className="pb-5 text-h3 font-semibold">{title}</h3>
         {hints && hints.length > 0 && (
-          <div className="text-base text-gray-700 space-y-1">
+          <div className="text-body text-ui-textSecondary space-y-0.5">
             {hints.map((hint, index) => (
-              <p key={index}>{hint}</p>
+              <p key={index} className="leading-tight">{hint}</p>
             ))}
           </div>
         )}
       </div>     
-      <div className="mt-[45px] flex items-center justify-center gap-5 overflow-x-auto mb-[75px]">
-        {options.map(opt => (
-          
+      <div className="mt-section flex items-center justify-center gap-5 overflow-x-auto mb-section">
+        {options.map(opt => (      
             <OptionChip
               key={opt.value}
               label={opt.label}
               active={selected === opt.value}
               onClick={() => onChange(opt.value)}
             />
-
         ))}
       </div>
     </div>

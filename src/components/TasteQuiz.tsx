@@ -23,8 +23,8 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
   // 현재 스텝의 두 질문 key
   const [q1, q2] = step.questions.map(q => q.key);
   const bothAnswered = Boolean(answers[q1] && answers[q2]); //2개 고정 일때
-// const bothAnswered = step.questions.every(q => !!answers[q.key]); 
-// 나중에 3개, 1개가 될 수도 있다?로 하면 “현재 step의 모든 질문에 답했는가?”로 의미가 더 명확 > 추후 수정원하면 변경
+ // const bothAnswered = step.questions.every(q => !!answers[q.key]); 
+ // 나중에 3개, 1개가 될 수도 있다?로 하면 “현재 step의 모든 질문에 답했는가?”로 의미가 더 명확 > 추후 수정원하면 변경
 
   const handleSelect = (key: AnswerKey, v: string) => {
     setAnswers(prev => ({ ...prev, [key]: v }));
@@ -42,13 +42,15 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
   const resetToMain = () => onCancelToMain();
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-6 text-black bg-white">
+    <section className="mx-auto max-w-3xl px-4 py-6 text-brand-dark bg-white h-[100svh] flex flex-col overflow-hidden">
       <QuizHeader current={stepIdx + 1} total={STEP_DEFS.length} />
+      <div className="flex-1 overflow-y-auto py-4 scrollbar-hide">
       <QuestionGroup
         step={step}
         answers={answers}
         onSelect={handleSelect}
       />
+      </div>
       <QuizNavigation
         isLast={isLast}
         canProceed={bothAnswered}
@@ -62,10 +64,10 @@ export default function TasteQuiz({ onCancelToMain, onComplete }: Props) {
 function QuizHeader({ current, total }: { current: number; total: number }) {
   return (
     <header>
-      <p className="mt-6 text-xl mb-10 flex items-center text-[#353535] font-normal"><WineGlassIcon className="mx-2 w-8 h-8" />나에게 딱 맞는 와인이 궁금하다면?</p>
-      <div className="mt-10 font-normal flex justify-center items-baseline">
-        <span className="text-2xl text-brand-accent">{current}</span>
-        <span className="text-sm">/{total}</span>
+      <p className="text-body mb-md flex items-center text-ui-textSecondary font-normal"><WineGlassIcon className="mx-sm w-8 h-8" />나에게 딱 맞는 와인이 궁금하다면?</p>
+      <div className="mt-md font-normal flex justify-center items-baseline">
+        <span className="text-h2 text-brand-accent">{current}</span>
+        <span className="text-caption">/{total}</span>
       </div>
     </header>
   );
