@@ -29,7 +29,7 @@ export default function MainSection({
   };
 
   return (
-    <div className="mx-auto max-w-4xl h-[100svh]">
+    <div className="mx-auto max-w-3xl relative">
       {viewMode === 'main' && (
         <Home onStart={() => setViewMode('quiz')} />
       )}

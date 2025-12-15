@@ -183,8 +183,6 @@ export default function SubscriptionPage() {
                   >
                     <WineCard
                       wine={wine}
-                      isLiked={false}
-                      onToggleLike={() => null}
                       showPrice={false}
                       className="h-full"
                     />

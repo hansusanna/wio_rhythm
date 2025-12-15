@@ -60,7 +60,7 @@ export default function Home({ onStart }: HomeProps) {
         </div>
       </section>
       {/* 실제 컨텐츠 시작 */}
-      <div className="bg-white text-black p-4 sm:pt-6 sm:px-6 md:p-8">
+      <div className="bg-white text-black p-4 sm:p-8 sm:px-6">
          {/* 멤버십 이벤트 배너 */}
         <MainEventBanner banners={topBanners} />
         <MasterPickSection 

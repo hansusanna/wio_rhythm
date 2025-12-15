@@ -1,5 +1,5 @@
 // src/pages/ResultPage.tsx
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { winelist } from '@/db/type/winelist';
 import type { Wine } from '@/db/type/wine';
@@ -22,7 +22,7 @@ export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const [likedIds, setLikedIds] = useState<(string | number)[]>([]);
+  
 
   /* 추천 와인 목록 + 대표 와인 계산 */
   const { mainWine, wines } = useMemo(() => {
@@ -89,13 +89,6 @@ export default function ResultPage() {
     personalityProfile?.description ??
     '당신의 선택을 기반으로 어울리는 와인 스타일을 추천해드렸어요.';
 
-
-  /* 좋아요 토글 / 페이지 이동 핸들러 */
-  const handleToggleLike = (id: string | number) => {
-    setLikedIds((prev) =>
-      prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id],
-    );
-  };
 
   const handleGoHome = () => navigate('/');
 
@@ -262,8 +255,6 @@ export default function ResultPage() {
                   <WineCard
                     key={wine.id}
                     wine={wine}
-                    isLiked={likedIds.includes(wine.id)}
-                    onToggleLike={handleToggleLike}
                     showPrice={false}
                     className="h-full"
                   />

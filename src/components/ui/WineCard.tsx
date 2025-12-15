@@ -101,21 +101,23 @@ export function WineCard({
           </div>
 
           {/* SVG 하트 버튼 */}
-          <button
-            type="button"
-            onClick={handleLikeClick}
-            className="ml-2 leading-none" // 기본 스타일
-            aria-label="찜하기"
-          >
-            <HeartIcon
-              isLiked={isLiked}
-              className={`h-6 w-6 ${
-                isLiked
-                  ? 'text-brand-accent' // 찜 되었을 때
-                  : 'text-black hover:text-brand-accent' // 기본 상태
-              }`}
-            />
-          </button>
+          {onToggleLike && (
+            <button
+              type="button"
+              onClick={handleLikeClick}
+              className="ml-2 leading-none" 
+              aria-label="찜하기"
+            >
+              <HeartIcon
+                isLiked={isLiked}
+                className={`h-6 w-6 ${
+                  isLiked
+                    ? 'text-brand-accent' // 찜 되었을 때
+                    : 'text-black hover:text-brand-accent' // 기본 상태
+                }`}
+              />
+            </button>
+          )}
         </div>
       </div>
       {/* 텍스트 영역 */}

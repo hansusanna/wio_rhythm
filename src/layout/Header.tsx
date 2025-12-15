@@ -156,9 +156,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
       {/* MOBILE + TABLET HEADER (< 840px)*/}
       <header className="sticky top-0 z-50 w-full bg-brand-primary border-b border-white/10 min-[840px]:hidden">
         {/* 상단 바: 모바일(px-4), 태블릿(min-[641px]:px-6) 패딩 적용 */}
-        <div className="mx-auto px-4 min-[641px]:px-6 h-14 flex items-center justify-between">
-          
-          {/* 로고: 4xl 크기*/}
+        <div className="mx-auto px-4 min-[641px]:px-6 h-14 flex items-center justify-between">  
           <Logo />
 
           {/* 햄버거 버튼 */}
@@ -212,7 +210,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
             <Logo className="pc-logo" />
           </div>
           <div className="mb-8 md:mb-20">
-            <h1 className="text-tit font-bold mb-6">평범함을 특별한 순간으로</h1>
+            <h1 className="text-tit font-maru font-bold mb-6">평범함을 특별한 순간으로</h1>
             <h2 className="text-subtit text-white font-extralight">
               매달 찾아오는 와인처럼, 당신의 <span className="font-semibold">바이오리듬에 와인</span>을 더하세요.
             </h2>

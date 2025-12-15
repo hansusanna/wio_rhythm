@@ -81,6 +81,13 @@ export function RecommendationSection({ answers, onGoHome }: Props) {
             webUrl: linkUrl,
           },
         },
+        {
+          title: '나도 테스트 하기',
+          link: {
+            mobileWebUrl: linkUrl,
+            webUrl: linkUrl,
+          },
+        },
       ],
     });
   };

@@ -74,7 +74,7 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
   };
 
   return (
-    <section className="py-12">
+    <section className="mt-12 mb-10">
       <div className="container mx-auto">
         {/* 섹션 제목 */}
         <h2 className="mb-8 text-center text-[40px] font-normal text-black">

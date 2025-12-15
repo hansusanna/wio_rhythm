@@ -47,16 +47,15 @@ export default function Layout() {
       <main className={'w-full h-full overflow-y-auto min-[840px]:w-[640px] ' + (isQuizMode ? 'relative z-30' : '')
         +' [&::-webkit-scrollbar]:w-1.5' +' [&::-webkit-scrollbar-track]:bg-transparent' 
       }>
+
         <MainSection
           viewMode={viewMode}
           setViewMode={setViewMode}
           quizAnswers={quizAnswers}
           setQuizAnswers={setQuizAnswers}
         />
-        <footer className="mt-12 md:mt-20">
-          <Foot />
-        </footer>
-      </main>
+        <Foot />
+      </main>  
     </div>
   )
 }

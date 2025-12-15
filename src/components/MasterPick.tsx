@@ -35,10 +35,10 @@ export function MasterPickSection({ likedWineIds, onToggleLike }: Props) {
   if (masterPickWines.length === 0) return null;
 
   return (
-    <section className="mt-20">
+    <section className="mt-12">
       {/* 섹션 타이틀 */}
       <header className="mb-10 text-center">      
-        <h2 className="mb-5 text-[40px] font-normal text-black">
+        <h2 className="mb-3 text-[40px] font-normal text-black">
           마스터의 특별 추천
         </h2>
         <p className="text-base text-black">

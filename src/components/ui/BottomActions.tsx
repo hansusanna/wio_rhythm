@@ -29,13 +29,13 @@ export function BottomActions({
   isSubscribeDisabled = false,
 }: BottomActionsProps) {
   return (
-    <div className="flex flex-col gap-3 md:flex-row md:justify-center w-full">
+    <div className="flex flex-col gap-2 md:flex-row md:justify-center w-full px-2">
       {/* 1. 카카오 버튼 (공유 또는 로그인) */}
       {onShare && (
         <button
           type="button"
           onClick={onShare}
-          className="flex w-full items-center justify-center gap-2 rounded-button bg-brand-kakao py-3 text-sm font-bold text-brand-dark transition-all shadow-button hover:bg-brand-kakaoHover active:scale-[0.98] md:w-auto md:min-w-[200px] md:px-6 md:text-base"
+          className="flex w-full items-center justify-center gap-2 rounded-button bg-brand-kakao py-3 text-sm font-bold text-brand-dark transition-all shadow-button hover:bg-brand-kakaoHover active:scale-[0.98] md:w-auto md:min-w-[200px] md:px-5 md:text-base"
         >
           <MessageCircle className="h-5 w-5" />
           {shareLabel}
@@ -48,7 +48,7 @@ export function BottomActions({
           type="button"
           onClick={onSubscribe}
           disabled={isSubscribeDisabled}
-          className={`w-full rounded-button py-3 text-sm font-bold text-white transition-all shadow-button md:w-auto md:min-w-[200px] md:px-6 md:text-base
+          className={`w-full rounded-button py-3 text-sm font-bold text-white transition-all shadow-button md:w-auto md:min-w-[200px] md:px-5 md:text-base
             ${isSubscribeDisabled 
               ? 'bg-ui-gray cursor-not-allowed opacity-50' 
               : 'bg-brand-primary hover:brightness-110 active:scale-[0.98]'
@@ -63,7 +63,7 @@ export function BottomActions({
         <button
           type="button"
           onClick={onSave}
-          className="w-full rounded-button border border-ui-border py-3 text-sm font-semibold text-ui-textSecondary transition-all hover:bg-ui-cardBg hover:text-brand-dark active:scale-[0.98] md:w-auto md:min-w-[180px] md:px-6 md:text-base flex items-center justify-center gap-2"
+          className="w-full rounded-button border border-ui-border py-3 text-sm font-semibold text-ui-textSecondary transition-all hover:bg-ui-cardBg hover:text-brand-dark active:scale-[0.98] md:w-auto md:min-w-[200px] md:px-5 md:text-base flex items-center justify-center gap-2"
         >
           <Check className="w-4 h-4" />
           마이페이지에 저장하기
@@ -74,7 +74,7 @@ export function BottomActions({
       <button
         type="button"
         onClick={onGoHome}
-        className="w-full rounded-button border border-ui-border py-3 text-sm font-semibold text-ui-gray transition-all hover:bg-ui-cardBg hover:text-brand-dark active:scale-[0.98] flex items-center justify-center gap-2 md:w-auto md:min-w-[180px] md:px-6 md:text-base"
+        className="w-full rounded-button border border-ui-border py-3 text-sm font-semibold text-ui-gray transition-all hover:bg-ui-cardBg hover:text-brand-dark active:scale-[0.98] flex items-center justify-center gap-2 md:w-auto md:min-w-[200px] md:px-5 md:text-base"
       >
         <Home className="w-4 h-4" />
         처음으로 돌아가기

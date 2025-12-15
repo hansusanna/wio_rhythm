@@ -11,8 +11,7 @@ export function MainEventBanner({ banners }: Props) {
   if (!banners.length) return null;
 
   return (
-    <section className="my-8 sm:my-10">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col">
         {banners.map((banner) =>
           banner.variant === 'photo' ? (
             <PhotoBannerCard key={banner.id} banner={banner} />
@@ -21,6 +20,6 @@ export function MainEventBanner({ banners }: Props) {
           )
         )}
       </div>
-    </section>
+
   );
 }
