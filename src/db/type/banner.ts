@@ -9,6 +9,7 @@ export type Banner = {
   ctaLabel?: string;
   href?: string;
   variant?: BannerVariant; // 'membership' | 'photo'
-  placement?: 'home.top' | 'home.bottom';
-  isActive?: boolean;
+  placement?: 'home.top' | 'home.bottom' ;
+  isActive:  number;
+  sortOrder?: number;
 };

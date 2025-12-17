@@ -7,6 +7,7 @@ interface NaviItem {
   title: string;
   link: string;
   lang?: 'ko' | 'en';
+  external: boolean;
 }
 
 type HeaderProps = {
@@ -31,23 +32,32 @@ export default function Header({ onStartQuiz }: HeaderProps) {
         const items = Array.from(xml.getElementsByTagName('item'));
 
         //js 객채로 변환
-       const parsed: NaviItem[] = items.map(item => ({
-          title: item.getElementsByTagName('title')[0]?.textContent || '',
-          link: item.getElementsByTagName('link')[0]?.textContent || '',
-          lang:  (item.getElementsByTagName('lang')[0]?.textContent?.trim() as 'ko'|'en') || undefined,
-        }));
+       const parsed: NaviItem[] = items.map((item) => {
+          const externalText = item
+            .getElementsByTagName('external')[0]
+            ?.textContent?.trim();
 
-        setNavi(parsed); //navidata 상태 업데이트
+          return {
+            title: item.getElementsByTagName('title')[0]?.textContent || '',
+            link: item.getElementsByTagName('link')[0]?.textContent || '',
+            lang:
+              (item.getElementsByTagName('lang')[0]?.textContent?.trim() as
+                | 'ko'
+                | 'en') || undefined,
+            external: externalText === 'true',
+          };
+        });
 
+        setNavi(parsed);
       } catch (error) {
         console.error('Error fetching navigation data:', error);
       } finally {
-        setLoading(false); // 로딩완료
+        setLoading(false);
       }
     };
 
     fetchNaviData();
-  }, []); //  컴포넌트 마운트 시 1회 진행 
+  }, []); //  컴포넌트 마운트 시 1회 진행  
 
    // className 프롭을 받아 반응형 크기 등을 외부에서 제어
   const Logo = ({ className = '' }: { className?: string }) => (
@@ -94,72 +104,105 @@ export default function Header({ onStartQuiz }: HeaderProps) {
 
   // 네비게이션 링크 렌더링 함수
   const renderNavLinks = (
-    isMobile: boolean = false, 
-    isWhiteBg: boolean = false, 
+    isMobile: boolean = false,
+    isWhiteBg: boolean = false,
     onStartQuiz?: () => void
   ) => (
     <ul className={`flex flex-col ${isMobile ? 'gap-1' : 'gap-1.5'}`}>
       {loading ? (
         Array.from({ length: 5 }).map((_, idx) => (
-          <li key={idx} className={`h-8 rounded-md animate-pulse ${isWhiteBg ? 'bg-gray-200' : 'bg-white/5'}`} />
+          <li
+            key={idx}
+            className={`h-8 rounded-md animate-pulse ${
+              isWhiteBg ? 'bg-gray-200' : 'bg-white/5'
+            }`}
+          />
         ))
       ) : (
-        navidata.map((item) => (
-          <li key={item.link}>
-            <NavLink
-              to={item.link}
-              className={({ isActive }) =>
-                `flex w-full items-center gap-2 rounded-md px-2 py-1 [font-size:var(--ty-navi-size)] font-normal transition-colors duration-150
-                ${
-                  isActive
-                    ? 'bg-brand-primary text-white' // 활성
-                    : isWhiteBg
-                    ? 'text-neutral-800 hover:bg-neutral-100' // 비활성 (흰 배경)
-                    : 'text-white hover:bg-white/10' // 비활성 (어두운 배경)
-                }`
-              }
-              // 모바일/태블릿에서만 링크 클릭 시 메뉴 닫기
-              onClick={(e) => {
-                const isMyPick = item.link === '/mypick';
+        navidata.map((item) => {
+          const isExternal = item.external || item.link.startsWith('http');
+          const isMyPick = item.link === '/mypick';
 
-                if (isMyPick && onStartQuiz) {
-                  e.preventDefault();
-                  onStartQuiz();
-                }
+          const closeMobileMenu = () => {
+            if (isMobile) setMenuOpen(false);
+          };
 
-                // 모바일이면 메뉴 닫기
-                if (isMobile) {
-                  setMenuOpen(false);
-                }
-              }}
-            >
-              {({ isActive }) => (
-                <span className="relative inline-block">
-                  <span lang={item.lang ?? 'ko'}>{item.title}</span>
-                  {badgeLinks.has(item.link) && (
-                    // 뱃지 로직: 활성이면 흰색, 비활성(흰배경)이면 브랜드컬러, 비활성(어두운배경)이면 흰색
-                    <span className={`absolute -top-0 -right-3 z-10 leading-none text-[10px] ${
-                      isActive ? 'text-white' : (isWhiteBg ? 'text-brand-primary' : 'text-white')
-                    }`} aria-hidden="true">●</span>
-                  )}
+          const inactiveClass = isWhiteBg
+            ? 'text-neutral-800 hover:bg-neutral-100'
+            : 'text-white hover:bg-white/10';
+
+          const Label = ({ isActive }: { isActive: boolean }) => (
+            <span className="relative inline-block">
+              <span lang={item.lang ?? 'ko'}>{item.title}</span>
+              {badgeLinks.has(item.link) && (
+                <span
+                  className={`absolute -top-0 -right-3 z-10 leading-none text-[10px] ${
+                    isActive ? 'text-white' : isWhiteBg ? 'text-brand-primary' : 'text-white'
+                  }`}
+                  aria-hidden="true"
+                >
+                  ●
                 </span>
               )}
-            </NavLink>
-          </li>
-        ))
+            </span>
+          );
+
+          // 외부 링크: <a target="_blank">
+          if (isExternal) {
+            return (
+              <li key={item.link}>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex w-full items-center gap-2 rounded-md px-2 py-1 [font-size:var(--ty-navi-size)] font-normal transition-colors duration-150 ${inactiveClass}`}
+                  onClick={closeMobileMenu}
+                >
+                  <Label isActive={false} />
+                </a>
+              </li>
+            );
+          }
+
+          // 내부 링크
+          return (
+            <li key={item.link}>
+              <NavLink
+                to={item.link}
+                className={({ isActive }) =>
+                  `flex w-full items-center gap-2 rounded-md px-2 py-1 [font-size:var(--ty-navi-size)] font-normal transition-colors duration-150
+                  ${
+                    isActive
+                      ? 'bg-brand-primary text-white'
+                      : isWhiteBg
+                      ? 'text-neutral-800 hover:bg-neutral-100'
+                      : 'text-white hover:bg-white/10'
+                  }`
+                }
+                onClick={(e) => {
+                  if (isMyPick && onStartQuiz) {
+                    e.preventDefault();
+                    onStartQuiz();
+                  }
+                  closeMobileMenu();
+                }}
+              >
+                {({ isActive }) => <Label isActive={isActive} />}
+              </NavLink>
+            </li>
+          );
+        })
       )}
     </ul>
   );
 
- return (
+  return (
     <>
       {/* MOBILE + TABLET HEADER (< 840px)*/}
       <header className="sticky top-0 z-50 w-full bg-brand-primary border-b border-white/10 min-[840px]:hidden">
-        {/* 상단 바: 모바일(px-4), 태블릿(min-[641px]:px-6) 패딩 적용 */}
-        <div className="mx-auto px-4 min-[641px]:px-6 h-14 flex items-center justify-between">  
+        <div className="mx-auto px-4 min-[641px]:px-6 h-14 flex items-center justify-between">
           <Logo />
 
-          {/* 햄버거 버튼 */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
             className="p-2 rounded-md hover:bg-white/10"
@@ -169,20 +212,16 @@ export default function Header({ onStartQuiz }: HeaderProps) {
           </button>
         </div>
 
-        {/* 메뉴 패널: (흰색 배경, 오른쪽에서 열림) */}
         <aside
           className={`fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-all duration-300
           ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-          onClick={() => setMenuOpen(false)} // 바깥 영역 클릭 시 닫기
+          onClick={() => setMenuOpen(false)}
         >
-          {/* 패널 크기/패딩: 모바일(p-4), 태블릿(min-[641px]:p-6) */}
-          <div 
+          <div
             className="absolute top-0 right-0 w-3/4 max-w-sm h-full bg-white text-neutral-900 p-4 min-[641px]:p-6 shadow-soft flex flex-col"
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* 패널 내부 헤더 (로고 + 닫기 버튼) */}
             <div className="flex items-center justify-between mb-6">
-              {/* 로고: 3xl ~ 4xl 크기 (LogoDark 컴포넌트 내부 로직) */}
               <LogoDark />
               <button
                 onClick={() => setMenuOpen(false)}
@@ -192,33 +231,29 @@ export default function Header({ onStartQuiz }: HeaderProps) {
                 <HamburgerIcon isOpen={true} iconColor="black" />
               </button>
             </div>
-            
-            {/* 네비게이션*/}
-            <nav className="overflow-y-auto">
-              {renderNavLinks(true, true, onStartQuiz)}
-            </nav>
+
+            <nav className="overflow-y-auto">{renderNavLinks(true, true, onStartQuiz)}</nav>
           </div>
         </aside>
       </header>
 
-      {/* PC HEADER / LEFT ASIDE(hidden min-[840px]:block - 840px 이상에서만 보임 )*/}
+      {/* PC HEADER / LEFT ASIDE */}
       <aside className="hidden min-[840px]:block z-40 w-[clamp(250px,41vw,590px)]">
-        {/* PC용 패딩 */}
         <div className="p-4 md:p-6 lg:p-0">
           <div className="mb-6 md:mb-[70px]">
-            {/* 로고: 5xl 크기 */}
             <Logo className="pc-logo" />
           </div>
+
           <div className="mb-8 md:mb-20">
             <h1 className="text-tit font-maru font-bold mb-6">평범함을 특별한 순간으로</h1>
             <h2 className="text-subtit text-white font-extralight">
               매달 찾아오는 와인처럼, 당신의 <span className="font-semibold">바이오리듬에 와인</span>을 더하세요.
             </h2>
           </div>
-          {/* 네비게이션 (어두운 배경 스타일) */}
+
           <nav>{renderNavLinks(false, false, onStartQuiz)}</nav>
         </div>
       </aside>
     </>
-  )
+  );
 }

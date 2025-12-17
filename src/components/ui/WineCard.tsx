@@ -23,6 +23,9 @@ const labelColorMap: Record<LabelType, string> = {
   BEST: 'bg-semantic-best-light',
 };
 
+const DEMO_PRODUCT_URL =
+  'https://qhqhchlrh.cafe24.com/product/%EB%A1%9C%EC%B9%B4-%EB%84%A4%EA%B7%B8%EB%9D%BC/254/category/53/display/1/';
+
 function HeartIcon({ isLiked, className }: { isLiked: boolean; className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" 
@@ -75,8 +78,17 @@ export function WineCard({
     if (!onToggleLike) return;
     onToggleLike(id);
   };
+   
+  const href = DEMO_PRODUCT_URL;
 
   return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+      aria-label={`${nameKo} 카페24 상품 상세로 이동`}
+    >
     <article className={`flex flex-col ${className}`}>
       <div className="relative bg-ui-cardBg p-5 pb-0">
         {/* 와인 이미지 */}
@@ -104,7 +116,11 @@ export function WineCard({
           {onToggleLike && (
             <button
               type="button"
-              onClick={handleLikeClick}
+              onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleLikeClick();
+            }}
               className="ml-2 leading-none" 
               aria-label="찜하기"
             >
@@ -199,5 +215,6 @@ export function WineCard({
         )}
       </div>
     </article>
+    </a>
   );
 }

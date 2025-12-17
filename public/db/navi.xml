@@ -1,39 +1,46 @@
 <navi>
-<menu>
+<mkou>
     <item>   
         <title>All Products</title>
-        <link>/products</link>
-        <lang>en</lang>
+        <link>https://qhqhchlrh.cafe24.com/category/All-Products/23/</link>
+        <lang>ko</lang>
+        <external>true</external>
     </item>
     <item>   
         <title>맞춤구독</title>
         <link>/subscribe</link>
         <lang>ko</lang>
+        <external>false</external>
     </item>
     <item>   
         <title>MyPick</title>
         <link>/mypick</link>
-        <lang>en</lang>
+        <lang>ko</lang>
+        <external>false</external>
     </item>
     <item>   
         <title>Premium</title>
-        <link>/premium</link> 
-        <lang>en</lang>
+        <link>https://qhqhchlrh.cafe24.com/jiyoung/premium.html</link> 
+        <lang>ko</lang>
+        <external>true</external>
     </item>
     <item>   
         <title>B2B</title>
-        <link>/b2b</link>
-        <lang>en</lang> 
+        <link>https://qhqhchlrh.cafe24.com/jiyoung/b2b.html</link>
+        <lang>ko</lang>
+        <external>true</external>
     </item>
     <item>   
         <title>Wio Table</title>
-        <link>/table</link>
-        <lang>en</lang>
+        <link>https://qhqhchlrh.cafe24.com/jiyoung/wioTable.html</link>
+        <lang>ko</lang>
+        <external>true</external>
     </item>
     <item>   
         <title>WIO-RTYTYM</title>
-        <link>/wiorhythm</link> 
-        <lang>en</lang>
+        <link>https://qhqhchlrh.cafe24.com/jiyoung/aboutWio.html</link> 
+        <lang>ko</lang>
+        <external>true</external>
     </item> 
-</menu>
+</mkou>
 </navi>

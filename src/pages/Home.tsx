@@ -1,22 +1,14 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MainEventBanner } from '@/components/MainEventBanner';
 import { MasterPickSection } from '@/components/MasterPick';
 import { ThemeRecommendation } from '@/components/ThemeRecommend';
-import { Membership } from '@/db/bannerList';
 import type { Wine } from '@/db/type/wine';
+import type { Banner } from '@/db/type/banner';
 
 type HomeProps = {
   onStart?: () => void;
 };
-
-// 위치별로 필터
-const topBanners = Membership.filter(
-  (b) => b.placement === 'home.top' && b.isActive
-);
-const bottomBanners = Membership.filter(
-  (b) => b.placement === 'home.bottom' && b.isActive
-);
 
 export default function Home({ onStart }: HomeProps) {
   // 좋아요 상태는 Home에서 단일 관리
@@ -27,6 +19,27 @@ export default function Home({ onStart }: HomeProps) {
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   };
+
+  const [banners, setBanners] = useState<Banner[]>([]);
+
+  useEffect(() => {
+    fetch('/api/banners.php')
+      .then((res) => res.json())
+      .then((data) => {
+        setBanners(data.items ?? []);
+      })
+      .catch((err) => {
+        console.error('배너 불러오기 실패', err);
+      });
+  }, []);
+
+    // 위치별로 필터
+  const topBanners = banners.filter(
+    (b) => b.placement === 'home.top' && b.isActive
+  );
+  const bottomBanners = banners.filter(
+    (b) => b.placement === 'home.bottom' && b.isActive
+  );
 
   return (
     <>

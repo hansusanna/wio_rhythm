@@ -23,18 +23,18 @@ export function MembershipBannerCard({ banner }: { banner: Banner }) {
           <img
             src={banner.image}
             alt={banner.title}
-            className="w-auto max-h-32 md:max-h-36 object-contain" 
+            className="w-auto max-h-28 md:max-h-32 object-contain" 
           />
           {/* 뱃지 이미지 (for you) */}
           {banner.badgeImage && (
             <img
               src={banner.badgeImage}
               alt=""
-              className="w-auto max-h-20 md:max-h-24 object-contain -ml-2"
+              className="w-auto max-h-14 md:max-h-16 object-contain -ml-4"
             />
           )}
         </div>
-        <div className="flex flex-col items-end -mt-10">
+        <div className="flex flex-col items-end -mt-16">
           {banner.ctaLabel && (
             <>
             <span className="text-base md:text-xl font-medium pr-14 leading-none z-10">
