@@ -30,25 +30,13 @@ export function BottomActions({
 }: BottomActionsProps) {
   return (
     <div className="flex flex-col gap-2 md:flex-row md:justify-center w-full px-2">
-      {/* 1. 카카오 버튼 (공유 또는 로그인) */}
-      {onShare && (
-        <button
-          type="button"
-          onClick={onShare}
-          className="flex w-full items-center justify-center gap-2 rounded-button bg-brand-kakao py-3 text-sm font-bold text-brand-dark transition-all shadow-button hover:bg-brand-kakaoHover active:scale-[0.98] md:w-auto md:min-w-[200px] md:px-5 md:text-base"
-        >
-          <MessageCircle className="h-5 w-5" />
-          {shareLabel}
-        </button>
-      )}
-
-      {/* 2. 구독하기 버튼 (메인 액션) */}
+      {/* 1. 구독하기 버튼 (메인 액션) */}
       {onSubscribe && (
         <button
           type="button"
           onClick={onSubscribe}
           disabled={isSubscribeDisabled}
-          className={`w-full rounded-button py-3 text-sm font-bold text-white transition-all shadow-button md:w-auto md:min-w-[200px] md:px-5 md:text-base
+          className={`w-full rounded-button py-3 text-sm font-semibold text-white transition-all shadow-button md:w-auto md:min-w-[200px] md:px-5 md:text-base
             ${isSubscribeDisabled 
               ? 'bg-ui-gray cursor-not-allowed opacity-50' 
               : 'bg-brand-primary hover:brightness-110 active:scale-[0.98]'
@@ -58,7 +46,7 @@ export function BottomActions({
         </button>
       )}
 
-      {/* 3. 마이페이지 저장 버튼 (옵션) */}
+      {/* 2. 마이페이지 저장 버튼 (옵션) */}
       {onSave && (
         <button
           type="button"
@@ -70,7 +58,7 @@ export function BottomActions({
         </button>
       )}
 
-      {/* 4. 홈으로 가기 버튼 */}
+      {/* 3. 홈으로 가기 버튼 */}
       <button
         type="button"
         onClick={onGoHome}
@@ -79,6 +67,18 @@ export function BottomActions({
         <Home className="w-4 h-4" />
         처음으로 돌아가기
       </button>
+
+      {/* 4. 카카오 버튼 (공유 또는 로그인) */}
+      {onShare && (
+        <button
+          type="button"
+          onClick={onShare}
+          className="flex w-full items-center justify-center gap-2 rounded-button bg-brand-kakao py-3 text-sm font-semibold text-brand-dark transition-all shadow-button hover:bg-brand-kakaoHover active:scale-[0.98] md:w-auto md:min-w-[200px] md:px-5 md:text-base"
+        >
+          <MessageCircle className="h-5 w-5" />
+          {shareLabel}
+        </button>
+      )}
     </div>
   );
 }

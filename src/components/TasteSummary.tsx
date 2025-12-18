@@ -10,11 +10,11 @@ type Props = {
 export function TasteSummary({ answers }: Props) {
 
   return (
-    <div className="mb-8 px-10 py-5 md:px-6 md:py-6 text-base rounded-md bg-ui-cardBg">
+    <div className="mb-8 px-10 py-5 md:px-6 md:py-6 text-base rounded-md max-w-[500px] w-full ">
       <div className="mb-4 flex flex-col items-center gap-4 text-ui-gray">
         {/* 종류 */}
         <div className="flex w-full flex-row items-center">
-          <span className="w-16 mr-2 font-semibold">종 류</span>
+          <span className="w-16 mr-2 font-semibold text-gray-700">* 종류</span>
           <span className="mr-2">{typeLabel(answers.type)}</span>
           <img
             src={typeBadgeImages[answers.type]}
@@ -25,7 +25,7 @@ export function TasteSummary({ answers }: Props) {
 
         {/* 지역 */}
         <div className="flex w-full flex-row items-center">
-          <span className="w-16 mr-2 font-semibold">지 역</span>
+          <span className="w-16 mr-2 font-semibold text-gray-700">* 지역</span>
           <span className="mr-2">{regionLabel(answers.region)}</span>
           {/* 국가 뱃지들을 감싸는 flex 컨테이너*/}
           <span className="flex flex-row items-center gap-1.5">
@@ -44,10 +44,10 @@ export function TasteSummary({ answers }: Props) {
 
       {/* 맛 프로파일 바 */}
       <div className="space-y-3">
-        <TasteBar label="바디감" levelKey="body" answers={answers} />
-        <TasteBar label="타닌감" levelKey="tannin" answers={answers} />
-        <TasteBar label="산미" levelKey="acidity" answers={answers} />
-        <TasteBar label="당도" levelKey="sweetness" answers={answers} />
+        <TasteBar label="* 바디감" levelKey="body" answers={answers} />
+        <TasteBar label="* 타닌감" levelKey="tannin" answers={answers} />
+        <TasteBar label="* 산미" levelKey="acidity" answers={answers} />
+        <TasteBar label="* 당도" levelKey="sweetness" answers={answers} />
       </div>
     </div>
   );

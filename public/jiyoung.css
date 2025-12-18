@@ -1,0 +1,11 @@
+.seasonBg{
+    background-image: url('/public/images/winter.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+    .seasonBg {
+      background-image: none;
+    }
+  }
