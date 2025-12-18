@@ -11,6 +11,7 @@ import type { QuizAnswers } from '@/db/type/quiz';
 import { TasteSummary } from '@/components/TasteSummary';
 import { WineCard } from '@/components/ui/WineCard';
 import { BottomActions } from '@/components/ui/BottomActions';
+import '/public/jiyoung.css';
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -202,21 +203,24 @@ export default function ResultPage() {
   }
 
   return (
-    <main className="min-h-screen bg-brand-primary">
-      <section className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+    <main className="min-h-screen bg-white md:bg-brand-primary">
+      <section className="mx-auto max-w-5xl px-0 md:px-4 pb-10 md:pb-14">
         {/* 상단 My Pick */}
-        <header className="mb-2 text-left text-white md:mb-8">
-          <h1 className="text-4xl font-bold md:text-6xl"><span className='italic font-en tracking-tight192'>My Pick</span><span className="pl-2 text-2xl md:text-3xl font-ko font-medium">당신만을 위한 와인</span> 
+        <header className="mb-2 text-left text-brand-accent md:text-white md:mb-8 px-4 md:px-8 pt-16 pb-3 relative seasonBg">
+          <div className="absolute inset-0 bg-gradient-to-t from-white/100 to-white/0 md:hidden"></div>
+          <h1 className="text-4xl font-bold md:text-6xl z-20 relative">
+            <span className='italic font-en tracking-tight192'>My Pick</span>
+            <span className="pl-2 text-2xl md:text-3xl font-ko font-medium">당신만을 위한 와인</span> 
           </h1>
         </header>
        
         {/*중앙 카드 */}
-        <div className="mx-auto max-w-[1000px] bg-white px-4 py-8 md:px-8 md:py-10">
+        <div className="mx-auto max-w-[1000px] bg-white px-4 pb-8 md:px-8 md:py-10">
           {/* 취향 유형 박스 */}
-          <section className="mb-8 rounded-xl bg-brand-accent px-5 py-7 text-center text-white md:px-8 md:py-9">
+          <section className="mb-8 rounded-md bg-brand-accent px-5 py-7 text-center text-white md:px-8 md:py-9">
             <p className="text-base md:text-2xl">
               당신은{' '}
-              <span className="font-bold font-maru text-xl md:text-4xl">"{personalityTitle}"</span>
+              <span className="font-semibold font-maru text-xl md:text-3xl">"{personalityTitle}"</span>
             </p>
 
             {/* 설명은 DB에서 줄바꿈(\n) 기준으로 출력 */}
@@ -231,7 +235,7 @@ export default function ResultPage() {
           </section>
           {/* 퀴즈 선택 결과 요약 + 그래프 */}
             {resultAnswers && (
-              <div className="mb-12">
+              <div className="mb-12 flex justify-center">
                 <TasteSummary answers={resultAnswers} />
               </div>
             )}
@@ -245,12 +249,12 @@ export default function ResultPage() {
                   </h2>
                   
                 </div>
-                <span className="inline-flex items-center rounded-full bg-border-light px-4 py-1 text-xs font-normal text-ui-textSecondary md:text-sm">
+                <span className="inline-flex items-center rounded-full bg-brand-lightred px-2 py-1 text-xs font-normal text-ui-textSecondary md:text-sm">
                   총 {wines.length}종 추천
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {wines.map((wine) => (
                   <WineCard
                     key={wine.id}
@@ -266,11 +270,11 @@ export default function ResultPage() {
           {/* 하단 CTA 버튼 */}
           <footer className="mt-12 border-t border-border-light">
             <div className="mt-12 mb-8 text-center">
-              <h3 className="mb-2 text-lg font-medium text-brand-dark md:text-xl">
+              <h3 className="mb-2 text-xl font-semibold text-brand-dark md:text-2xl">
                 이 와인들, 매달 집에서 받아보시겠어요?
               </h3>
-              <p className="text-xs text-brand-dark font-light md:text-sm">
-                지금 구독하시면 첫 달에는 특별 혜택과 함께 ‘스타트 선물 세트’를 보내드려요.
+              <p className="text-sm text-brand-dark font-medium md:text-sm flex justify-center flex-col md:flex-row">
+                <span className='mr-1'>지금 구독하시면 첫 달에는 특별 혜택과 함께</span><span>‘스타트 선물 세트’를 보내드려요.</span>
               </p>
             </div>
 

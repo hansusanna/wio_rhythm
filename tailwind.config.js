@@ -22,6 +22,7 @@ export default {
           kakao: '#FEE500',    // 카카오톡 버튼
           kakaoHover: '#FDD835', // 카카오톡 버튼 호버
           bannerDark: '#1E1913', // 배너 다크 배경
+          lightred: '#efe7e8',
         },
         // 2.UI요소 색상
         ui: {
@@ -30,7 +31,7 @@ export default {
           gray: '#838383',         //gray (기본 gray와 톤이 다름)
           cardBg: '#F0F0F0',      // 카드 배경
           textMuted: '#b4b4b4',   // 텍스트 뮤트
-          textSecondary: '#353535', // 보조 텍스트
+          textSecondary: '#353535', // 보조 텍스트        
         },
         // 3.테마색상(뱃지,메뉴 등)
         semantic: {

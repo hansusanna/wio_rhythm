@@ -39,21 +39,21 @@ export default function SubscriptionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-brand-primary">
+    <main className="min-h-screen bg-white md:bg-brand-primary">
       <section className="mx-auto max-w-5xl px-4 py-10 md:py-14">
         {/* 화이트 카드 */}
-        <div className="mx-auto max-w-[1000px] bg-white px-4 py-10 shadow-card md:px-10">
+        <div className="mx-auto max-w-[1000px] bg-white px-4 py-10 md:px-10">
           
           {/* 상단 헤더 */}
-          <header className="mb-10 text-left">
-            <div className="inline-flex items-center rounded-full bg-brand-primary/10 px-4 py-1 text-xs font-medium text-brand-primary mb-3 border border-brand-primary/20">
-              Wio Rhythm Membership
+          <header className="mb-10 text-center">
+            <div className="inline-flex items-center rounded-full bg-brand-primary/10 text-sm font-medium text-brand-primary mb-5">
+              <img src="/public/images/membershipcard.jpg" alt="" className='w-[150px] h-[90]'/>
             </div>
-            <h1 className="text-2xl font-semibold md:text-3xl text-brand-dark">
+            <h1 className="text-3xl font-semibold md:text-4xl text-brand-dark">
               멤버십 구독 플랜
             </h1>
-            <p className="mt-2 text-sm text-ui-gray">
-              나에게 딱 맞는 플랜과 첫 달 와인을 선택해보세요.
+            <p className="mt-2 text-md text-ui-gray">
+              나에게 딱 맞는 플랜을 선택해보세요.
             </p>
           </header>
 
@@ -65,7 +65,7 @@ export default function SubscriptionPage() {
                 setSelectedPlan('BASIC');
                 setSelectedWineId(null);
               }}
-              className={`rounded-card p-6 border cursor-pointer transition-all
+              className={`rounded-card p-4 md:p-8 border cursor-pointer transition-all
                 ${
                   selectedPlan === 'BASIC'
                     ? 'border-brand-accent bg-brand-accent/5 shadow-cardHover'
@@ -75,13 +75,13 @@ export default function SubscriptionPage() {
               <div className="flex justify-between items-start">
                 <div>
                   <h3
-                    className={`text-lg font-bold ${
+                    className={`text-lg font-bold font-en ${
                       selectedPlan === 'BASIC' ? 'text-brand-accent' : 'text-brand-dark'
                     }`}
                   >
                     Basic Plan
                   </h3>
-                  <p className="text-sm text-ui-textMuted">가볍게 시작하는 데일리 와인</p>
+                  <p className="text-sm text-ui-gray">가볍게 시작하는 데일리 와인</p>
                 </div>
                 {selectedPlan === 'BASIC' && (
                   <div className="bg-brand-accent text-white rounded-full p-1 shadow-button">
@@ -90,18 +90,22 @@ export default function SubscriptionPage() {
                 )}
               </div>
 
-              <p className="mt-4 text-2xl font-bold text-brand-dark">월 39,000원</p>
+              <p className="mt-3 text-2xl font-bold text-brand-dark">월 29,000원</p>
 
-              <ul className="mt-4 space-y-2 text-sm text-ui-textSecondary bg-ui-cardBg/50 rounded-card p-4 border border-ui-border">
+              <ul className="mt-3 space-y-1 text-sm text-ui-textSecondary bg-ui-cardBg/50 rounded-card p-4 border border-ui-border">
                 <li className="flex items-center">
                   <Check className="w-4 h-4 mr-2 text-brand-accent" />
-                  매월 와인 1병 + 무료 배송
+                  4만원 상당 와인 1병 + 무료배송
                 </li>
                 <li className="flex items-center">
                   <Check className="w-4 h-4 mr-2 text-brand-accent" />
-                  5% 포인트 적립
+                  1% 포인트 적립
                 </li>
-                <li className="text-xs text-ui-textMuted pl-6">※ 4만원 이하 와인 선택 가능</li>
+                <li className="flex items-center">
+                  <Check className="w-4 h-4 mr-2 text-brand-accent" />
+                  4만원 이하 와인 선택 가능
+                </li>
+                
               </ul>
             </div>
 
@@ -111,7 +115,7 @@ export default function SubscriptionPage() {
                 setSelectedPlan('PREMIUM');
                 setSelectedWineId(null);
               }}
-              className={`rounded-card p-6 border cursor-pointer transition-all
+              className={`rounded-card p-4 md:p-8 border cursor-pointer transition-all
                 ${
                   selectedPlan === 'PREMIUM'
                     ? 'border-brand-accent bg-brand-accent/5 shadow-cardHover'
@@ -121,7 +125,7 @@ export default function SubscriptionPage() {
               <div className="flex justify-between items-start">
                 <div>
                   <h3
-                    className={`text-lg font-bold ${
+                    className={`text-lg font-bold font-en ${
                       selectedPlan === 'PREMIUM'
                         ? 'text-brand-accent'
                         : 'text-brand-dark'
@@ -129,7 +133,7 @@ export default function SubscriptionPage() {
                   >
                     Premium Plan
                   </h3>
-                  <p className="text-sm text-ui-textMuted">더 풍성하게 즐기는 미식 생활</p>
+                  <p className="text-sm text-ui-gray">더 풍성하게 즐기는 미식 생활</p>
                 </div>
                 {selectedPlan === 'PREMIUM' && (
                   <div className="bg-brand-accent text-white rounded-full p-1 shadow-button">
@@ -138,18 +142,22 @@ export default function SubscriptionPage() {
                 )}
               </div>
 
-              <p className="mt-4 text-2xl font-bold text-brand-dark">월 59,000원</p>
+              <p className="mt-3 text-2xl font-bold text-brand-dark">월 49,000원</p>
 
-              <ul className="mt-4 space-y-2 text-sm text-ui-textSecondary bg-ui-cardBg/50 rounded-card p-4 border border-ui-border">
+              <ul className="mt-3 space-y-1 text-sm text-ui-textSecondary bg-ui-cardBg/50 rounded-card p-4 border border-ui-border">
                 <li className="flex items-center">
                   <Check className="w-4 h-4 mr-2 text-brand-accent" />
-                  와인 1병 + 랜덤 1병 (무료 배송)
+                  6만원 상당 와인 1병 + 무료배송
                 </li>
                 <li className="flex items-center">
                   <Check className="w-4 h-4 mr-2 text-brand-accent" />
-                  10% 포인트 적립
+                  3% 포인트 적립
                 </li>
-                <li className="text-xs text-ui-textMuted pl-6">※ 6만원 이하 와인 선택 가능</li>
+                <li className="flex items-center">
+                  <Check className="w-4 h-4 mr-2 text-brand-accent" />
+                  6만원 이하 와인 선택 가능
+                </li>
+                
               </ul>
             </div>
           </section>
@@ -159,7 +167,7 @@ export default function SubscriptionPage() {
             <div className="mb-4 flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
               <h3 className="text-lg font-bold flex items-center text-brand-dark md:text-xl">
                 <WineIcon className="w-5 h-5 mr-2 text-brand-accent" />
-                첫 달 받아보실 와인 선택
+                첫 달 받아보실 와인을 선택하세요
               </h3>
             </div>
 
@@ -170,7 +178,7 @@ export default function SubscriptionPage() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 xl:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-3">
                 {displayWines.map((wine) => (
                   <div
                     key={wine.id}
@@ -198,7 +206,7 @@ export default function SubscriptionPage() {
               onSubscribe={handleSubscribe}
               onShare={handleKakaoLogin}
               onGoHome={handleGoHome}
-              subscribeLabel={selectedWineId ? '이 와인으로 구독 시작' : '와인을 선택해주세요'}
+              subscribeLabel={selectedWineId ? '구독 시작하기' : '와인을 선택해주세요'}
               shareLabel="카카오로 3초 만에 시작하기"
               isSubscribeDisabled={!selectedWineId}
             />
