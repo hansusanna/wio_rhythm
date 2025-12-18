@@ -30,11 +30,11 @@ export function MembershipBannerCard({ banner }: { banner: Banner }) {
             <img
               src={banner.badgeImage}
               alt=""
-              className="w-auto max-h-14 md:max-h-16 object-contain -ml-4"
+              className="w-auto max-h-16 md:max-h-20 object-contain -ml-2"
             />
           )}
         </div>
-        <div className="flex flex-col items-end -mt-16">
+        <div className="flex flex-col items-end -mt-10">
           {banner.ctaLabel && (
             <>
             <span className="text-base md:text-xl font-medium pr-14 leading-none z-10">
