@@ -20,7 +20,7 @@ export default function Layout() {
   return (
     // min-[840px]:justify-center  840 ~ 1023: 중앙 정렬
     // PC (min-[840px]): gap-[clamp(80px,8vw,200px)] (PC에서만 Header와 Main 사이 간격)
-    <div className="h-screen bg-brand-primary text-white flex flex-col items-center overflow-hidden
+    <div className="h-screen bg-brand-primary text-white flex flex-col overflow-hidden
                    min-[840px]:flex-row min-[840px]:items-center min-[840px]:justify-center 
                    min-[840px]:gap-[clamp(48px,5vw,200px)]">
       
@@ -44,10 +44,12 @@ export default function Layout() {
         태블릿 (min-[641px]): w-full. (태블릿 헤더가 sticky + w-full 이므로 main도 w-full)
         PC (min-[840px]): w-[640px] (PC 레이아웃에서만 640px 너비 고정)
       */}
-      <main className={'w-full h-full overflow-y-auto min-[840px]:w-[640px] ' + (isQuizMode ? 'relative z-30' : '')
-        +' [&::-webkit-scrollbar]:w-1.5' +' [&::-webkit-scrollbar-track]:bg-transparent' 
-      }>
-
+      <main className={[
+        'w-full h-full overflow-y-auto min-[840px]:w-[640px]',
+        isQuizMode ? 'relative z-30' : '',
+        'scrollbar-none',
+        ].join(' ')}
+      >
         <MainSection
           viewMode={viewMode}
           setViewMode={setViewMode}

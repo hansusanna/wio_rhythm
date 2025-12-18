@@ -7,10 +7,11 @@ $breakpoint-xl: 1440px;
 :root {
   /* Default Mode (375px) - Mobile */
   --font-body-family : 'Caudex','Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ty-picktit-size: 100px;
   --ty-tit-size: 24px;
   --ty-sub-size: 18px;
   --ty-navi-size: 16px;
-  --ty-h2-size: 28px;
+  --ty-h2-size: 26px;
   --ty-sctit-size: 36px;
   --ty-body-size: 14px;
   --ty-banner-size: 52px;  
@@ -19,8 +20,8 @@ $breakpoint-xl: 1440px;
   --ty-body-lineh: 20px;
   --sp-xl: 24px;
   --sp-lg: 12px;
-  --sp-md: 8px;
-  --sp-sm: 4px;
+  --sp-md: 10px;
+  --sp-sm: 8px;
   --grid-columns: 1; /* Tailwind CSS에서 직접 사용하기 어렵지만, 참고용으로 정의 */
 }
 
@@ -28,6 +29,7 @@ $breakpoint-xl: 1440px;
 @media (min-width:$breakpoint-md) {
 // 768이상일때이므로 가장 범주가 크므로 우선순위를 낮춰야 하므로 위로 올려야한다.
   :root {
+    --ty-picktit-size: 128px;
     --ty-tit-size: 28px;
     --ty-sub-size: 18px;
     --ty-navi-size: 16px;
@@ -40,7 +42,7 @@ $breakpoint-xl: 1440px;
     --ty-body-lineh: 20px;
     --sp-xl: 32px;
     --sp-lg: 16px;
-    --sp-md: 8px;
+    --sp-md: 10px;
     --sp-sm: 4px;
     --grid-columns: 2;
   }
@@ -49,6 +51,7 @@ $breakpoint-xl: 1440px;
 /*1080이상일때 변수 */
 @media (min-width: $breakpoint-lg) {
   :root {
+    --ty-picktit-size: 128px;
     --ty-tit-size: 36px;
     --ty-sub-size: 22px;
     --ty-navi-size: 18px;
@@ -70,6 +73,7 @@ $breakpoint-xl: 1440px;
 /* Desktop (1440px)*/
 @media (min-width:$breakpoint-xl) {
   :root {
+    --ty-picktit-size: 128px;
     --ty-tit-size: 40px;
     --ty-sub-size: 24px;
     --ty-navi-size: 20px;

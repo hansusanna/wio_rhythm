@@ -62,7 +62,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
    // className 프롭을 받아 반응형 크기 등을 외부에서 제어
   const Logo = ({ className = '' }: { className?: string }) => (
     <Link to="/" className={`inline-flex items-baseline ${className}`} aria-label="WioRhythm 홈으로 이동">
-      <WineGlassIcon aria-hidden="true" className='wineicon' />
+      <WineGlassIcon aria-hidden="true" className='pt-1'/>
       {/* PC(5xl)와 모바일/태블릿(4xl) 폰트 크기 분리 
         (PC 헤더는 min-[840px]:block 이므로 5xl이 적용되고,
          모바일 헤더는 min-[840px]:hidden 이므로 4xl이 적용됨)
@@ -80,9 +80,9 @@ export default function Header({ onStartQuiz }: HeaderProps) {
   // className 프롭을 받아 반응형 크기 등을 외부에서 제어
   const LogoDark = ({ className = '' }: { className?: string }) => (
     <Link to="/" className={`inline-flex items-baseline ${className}`} aria-label="WioRhythm 홈으로 이동">
-      <WineGlassIcon aria-hidden="true" className="text-brand-primary wineicon" />
+      <WineGlassIcon aria-hidden="true" className="text-brand-primary pt-1" />
       {/* 흰색 패널 내부 로고 (모바일 3xl, 태블릿 4xl) */}
-      <span className="text-brand-primary font-normal text-3xl font-logo">
+      <span className="text-brand-primary font-normal text-4xl font-logo">
         W<span className="text-ui-gray font-logo">io</span>
         R<span className="text-ui-gray font-logo">hythm</span>
       </span>
@@ -200,7 +200,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
     <>
       {/* MOBILE + TABLET HEADER (< 840px)*/}
       <header className="sticky top-0 z-50 w-full bg-brand-primary border-b border-white/10 min-[840px]:hidden">
-        <div className="mx-auto px-4 min-[641px]:px-6 h-14 flex items-center justify-between">
+        <div className="mx-auto py-1 min-[641px]:px-6 flex items-center justify-between">
           <Logo />
 
           <button

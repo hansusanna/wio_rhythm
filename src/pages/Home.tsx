@@ -44,27 +44,27 @@ export default function Home({ onStart }: HomeProps) {
   return (
     <>
       {/* 배경 섹션 */}
-      <section className="h-[100svh] flex items-center justify-center text-black">
+      <section className="h-[100svh] flex justify-center text-black">
         {/* 메인 640px 기준 배경 컨테이너 */}
-        <div className="w-[640px] max-w-[90vw] h-full bg-[url('/images/mainbg.jpg')] bg-cover bg-center flex items-center justify-center">
+        <div className="w-[640px] h-full bg-[url('/images/mainbg.jpg')] bg-cover bg-center flex items-center justify-center">
           {/* 콘텐츠 박스: 절대포지션 없이 중앙정렬 */}
-          <div className="flex flex-col items-center justify-start text-center p-[clamp(40px,8vh,96px)] gap-6">
+          <div className="flex flex-col items-center justify-start text-center p-[clamp(40px,6vh,96px)] gap-10">
             {/* 타이틀 */}
-            <p id="mypick-heading" data-animate="mypick" className="font-mypick text-picktit font-nomal select-none wio-hero-title">
+            <p id="mypick-heading" data-animate="mypick" className="font-mypick text-picktit font-nomal select-none mb-10 md:mb-20">
               My Pick
             </p>
 
             {/* 서브타이틀: 메인 640px 기준 80% */}
-            <p className="w-[80%] max-w-[512px] text-h2 font-medium wio-hero-subtitle">
+            <p className="max-w-[512px] text-h2 font-medium mb-10 md:mb-20">
               수 많은 와인 속,<br/>당신만의 보석을 찾아보세요
             </p>
 
             <button
               type="button"
               onClick={onStart} // 여기서 
-              className="w-[80%] max-w-[512px] inline-flex items-center justify-center
-                bg-brand-accent text-white text-findtit px-4 py-5 min-h-[44px] shadow-md
-                hover:opacity-95 active:opacity-90 transition wio-hero-cta"
+              className="inline-flex items-center justify-center
+                bg-brand-accent text-white text-findtit px-10 md:px-20 py-5 min-h-[44px] shadow-md
+                hover:opacity-95 active:opacity-90 transition rounded-chip"
               aria-label="내 취향 찾기 모달 열기"
               >
               내 취향 찾기

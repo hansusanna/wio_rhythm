@@ -1,5 +1,4 @@
 // src/db/personalityType.ts
-
 export type PersonalityProfile = {
   code: string;        // "full-strong-low-low"
   title: string;       // "클래식 감각가형"
@@ -187,3 +186,40 @@ export const personalityMap: Record<string, PersonalityProfile> = {
       "부담 없이 즐기기에 좋아요.",
   },
 };
+
+export const DEFAULT_PERSONALITY: PersonalityProfile = {
+  code: 'default',
+  title: '당신만의 와인 스타일',
+  description:
+    '당신의 선택을 기반으로 어울리는 와인 스타일을 추천해드렸어요.',
+};
+
+export function getPersonalityProfile(
+  code: string | null | undefined,
+): PersonalityProfile {
+  if (!code) return DEFAULT_PERSONALITY;
+
+  // 1) 완전 일치
+  const exact = personalityMap[code];
+  if (exact) return exact;
+
+  const [body, , acidity, sweetness] = code.split('-');
+
+  const profiles = Object.values(personalityMap);
+
+  // 2) body + acidity + sweetness 우선 매칭
+  const match3 = profiles.find((p) => {
+    const [b, , a, s] = p.code.split('-');
+    return b === body && a === acidity && s === sweetness;
+  });
+  if (match3) return match3;
+
+  // 3) body 기준 느슨한 매칭
+  const match1 = profiles.find((p) =>
+    p.code.startsWith(`${body}-`),
+  );
+  if (match1) return match1;
+
+  // 4) 최종 fallback
+  return DEFAULT_PERSONALITY;
+}

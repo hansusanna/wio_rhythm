@@ -15,8 +15,7 @@ const THEMES = [
   { id: 'organic', label: '# 유기농와인' },
 ] as const;
 
-type ThemeType = typeof THEMES[number]['id'];
-
+type ThemeType = (typeof THEMES)[number]['id'];
 
 // Props 정의 (찜 기능 연동을 위해 추가)
 type Props = {
@@ -30,7 +29,9 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
 
   // 스와이퍼 및 페이지네이션
   const [current, setCurrent] = useState(1);
-  const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperInstance | null>(
+    null,
+  );
 
   // 선택된 테마에 따라 와인 필터링
   const filteredWines = useMemo(() => {
@@ -53,11 +54,11 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
     });
   }, [activeTheme]);
 
-  //테마 변경 시 스와이퍼 초기화 (첫 페이지로 이동)
+  // 테마 변경 시 스와이퍼 초기화 (첫 페이지로 이동)
   useEffect(() => {
     if (swiperInstance) {
       swiperInstance.slideTo(0);
-      setCurrent(1); 
+      setCurrent(1);
     }
   }, [activeTheme, swiperInstance, filteredWines.length]);
 
@@ -73,27 +74,30 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
     if (onToggleLike) onToggleLike(id);
   };
 
+  // 디자인 토큰 기반 클래스(하드코딩 최소화)
+  const tabBase = 'rounded-button border px-sm md:py-1 text-body font-normal transition-colors duration-200';
+  const tabActive = 'bg-brand-accent text-white border-brand-accent';
+  const tabIdle = 'bg-white text-brand-accent border-brand-accent hover:bg-brand-accent hover:text-white';
+
   return (
-    <section className="mt-12 mb-10">
+    <section className="mt-section mb-lg">
       <div className="container mx-auto">
         {/* 섹션 제목 */}
-        <h2 className="mb-8 text-center text-[40px] font-normal text-black">
+        <h2 className="mb-5 md:mb-10 text-center text-tit font-normal text-brand-dark">
           테마별 추천
         </h2>
 
         {/* 탭 메뉴 */}
-        <div className="mb-5 flex flex-wrap justify-center gap-4">
+        <div className="mb-md flex flex-wrap justify-center gap-sm md:gap-md">
           {THEMES.map((theme) => (
             <button
               key={theme.id}
               onClick={() => setActiveTheme(theme.id)}
-              className={`rounded-lg border px-2.5 py-0.5 text-lg font-normal transition-colors duration-200
-                ${
-                  activeTheme === theme.id
-                    ? 'bg-[#570E19] text-white border-[#570E19]'
-                    : 'bg-white text-[#570E19] border-[#570E19] hover:bg-[#570E19] hover:text-white'
-                }
-              `}
+              className={[
+                tabBase,
+                activeTheme === theme.id ? tabActive : tabIdle,
+              ].join(' ')}
+              type="button"
             >
               {theme.label}
             </button>
@@ -104,14 +108,13 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
         {filteredWines.length > 0 ? (
           <div className="relative">
             <Swiper
-                onSwiper={setSwiperInstance}
-                spaceBetween={16}
-                slidesPerView={2.2}
-                // 페이지네이션 로직 단순화
-                onSlideChange={(swiper) => {
+              onSwiper={setSwiperInstance}
+              spaceBetween={16}
+              slidesPerView={2.2}
+              onSlideChange={(swiper) => {
                 setCurrent(swiper.activeIndex + 1);
-                }}
-                className="px-1"
+              }}
+              className="px-1"
             >
               {filteredWines.map((wine) => (
                 <SwiperSlide key={wine.id} className="h-auto">
@@ -135,11 +138,11 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
                 current={current}
                 total={totalCount}
               />
-            </div>    
+            </div>
           </div>
         ) : (
           // 해당 조건의 와인이 없을 경우 안내 메시지
-          <div className="py-20 text-center text-gray-400">
+          <div className="py-20 text-center text-ui-textMuted">
             해당 테마의 와인이 준비중입니다.
           </div>
         )}

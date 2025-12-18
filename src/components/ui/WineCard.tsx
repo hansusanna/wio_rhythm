@@ -60,6 +60,11 @@ export function WineCard({
     stockLabel,
   } = wine;
 
+  const stockCount = stockLabel?.match(/\d+/)?.[0];
+  const mobileStockText = stockCount
+  ? `마지막 ${stockCount}병`
+  : stockLabel ?? '';
+
   const hasOriginal = typeof originalPrice === 'number';
   const hasSale = typeof salePrice === 'number';
 
@@ -90,17 +95,17 @@ export function WineCard({
       aria-label={`${nameKo} 카페24 상품 상세로 이동`}
     >
     <article className={`flex flex-col ${className}`}>
-      <div className="relative bg-ui-cardBg p-5 pb-0">
+      <div className="relative bg-ui-cardBg p-1.5 md:p-5 pb-0">
         {/* 와인 이미지 */}
         <div className="relative mb-3 flex items-center justify-center">
           <img
             src={image}
             alt={nameKo}
-            className="h-[280px] w-auto object-contain"
+            className="h-[180px] md:h-[280px] w-auto object-contain"
           />
         </div>
         {/* 상단 라벨 & 찜버튼 */}
-        <div className="absolute top-0 left-0 right-0 flex items-start justify-between p-4">
+        <div className="absolute top-0 left-0 right-0 flex items-start justify-between p-2 md:p-4">
           <div className="flex flex-col gap-1">
             {labels?.map((label) => (
               <span
@@ -164,20 +169,18 @@ export function WineCard({
 
         {/* 가격 영역 */}
         {showPrice && (
-          <div className="flex items-baseline gap-2 leading-non pb-2.5">
-            {/* 할인 있을 때만 정가 취소선 */}
+          <div className="flex flex-col md:flex-row md:items-baseline md:gap-2 pb-2.5">
             {hasDiscount && (
               <span className="text-sm text-ui-gray line-through">
                 {originalPrice!.toLocaleString()}원
               </span>
             )}
-            {/* 할인 있을 때만 할인 퍼센트 */}
             {hasDiscount && discountPercent !== null && (
-              <span className="text-base font-normal text-red-500 leading-none">
+              <span className="text-sm font-normal text-red-500">
                 -{discountPercent}%
               </span>
             )}
-            {/* 항상 마지막에 실제 표시 가격 */}
+
             <span className="text-lg font-semibold text-black leading-none">
               {displayPrice.toLocaleString()}
               <span className="ml-1 text-sm font-normal">원</span>
@@ -205,8 +208,13 @@ export function WineCard({
             )}
             {/* 매진임박 뱃지*/}
             {stockLabel && (
-              <div> {/* 부모의 gap-2로 인해 자동 간격 조절됨 */}
-                <span className="rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white">
+              <div>
+                {/* 모바일 */}
+                <span className="rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white md:hidden">
+                  {mobileStockText}
+                </span>
+                {/* md 이상 */}
+                <span className="hidden rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white md:inline">
                   {stockLabel}
                 </span>
               </div>

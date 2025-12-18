@@ -10,6 +10,13 @@ export default function SubscriptionPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const planCardBase =
+    'rounded-card border cursor-pointer transition-all p-4 md:p-8';
+  const planCardActive =
+    'border-brand-accent bg-brand-accent/5 shadow-cardHover';
+  const planCardInactive =
+    'border-ui-border hover:border-brand-accent/40 hover:bg-brand-accent/5';
+
   const matchedWines: Wine[] = location.state?.matchedWines || [];
 
   const [selectedPlan, setSelectedPlan] = useState<'BASIC' | 'PREMIUM'>('BASIC');
@@ -47,7 +54,7 @@ export default function SubscriptionPage() {
           {/* 상단 헤더 */}
           <header className="mb-10 text-center">
             <div className="inline-flex items-center rounded-full bg-brand-primary/10 text-sm font-medium text-brand-primary mb-5">
-              <img src="/public/images/membershipcard.jpg" alt="" className='w-[150px] h-[90]'/>
+              <img src="/images/membershipcard.jpg" alt="" className='w-[150px] h-[90px]'/>
             </div>
             <h1 className="text-3xl font-semibold md:text-4xl text-brand-dark">
               멤버십 구독 플랜
@@ -65,12 +72,9 @@ export default function SubscriptionPage() {
                 setSelectedPlan('BASIC');
                 setSelectedWineId(null);
               }}
-              className={`rounded-card p-4 md:p-8 border cursor-pointer transition-all
-                ${
-                  selectedPlan === 'BASIC'
-                    ? 'border-brand-accent bg-brand-accent/5 shadow-cardHover'
-                    : 'border-ui-border hover:border-brand-accent/40 hover:bg-brand-accent/5'
-                }`}
+              className={`${planCardBase} ${
+                selectedPlan === 'BASIC' ? planCardActive : planCardInactive
+              }`}
             >
               <div className="flex justify-between items-start">
                 <div>
@@ -115,12 +119,9 @@ export default function SubscriptionPage() {
                 setSelectedPlan('PREMIUM');
                 setSelectedWineId(null);
               }}
-              className={`rounded-card p-4 md:p-8 border cursor-pointer transition-all
-                ${
-                  selectedPlan === 'PREMIUM'
-                    ? 'border-brand-accent bg-brand-accent/5 shadow-cardHover'
-                    : 'border-ui-border hover:border-brand-accent/40 hover:bg-brand-accent/5'
-                }`}
+              className={`${planCardBase} ${
+                selectedPlan === 'PREMIUM' ? planCardActive : planCardInactive
+              }`}
             >
               <div className="flex justify-between items-start">
                 <div>

@@ -4,14 +4,13 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { winelist } from '@/db/type/winelist';
 import type { Wine } from '@/db/type/wine';
 import {
-  personalityMap,
+  getPersonalityProfile,
   type PersonalityProfile,
 } from '@/db/type/personalityType';
 import type { QuizAnswers } from '@/db/type/quiz';
 import { TasteSummary } from '@/components/TasteSummary';
 import { WineCard } from '@/components/ui/WineCard';
 import { BottomActions } from '@/components/ui/BottomActions';
-import '/public/jiyoung.css';
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,8 +21,6 @@ declare global {
 export default function ResultPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-
-  
 
   /* 추천 와인 목록 + 대표 와인 계산 */
   const { mainWine, wines } = useMemo(() => {
@@ -74,22 +71,17 @@ export default function ResultPage() {
   // URL 예: ?type=full-strong-low-low
   const typeParam = searchParams.get('type');
 
-  // 1순위 URL 파라미터, 2순위 wine 데이터, 3순위 null
+  const buildCodeFromWine = (wine: Wine) =>
+  `${wine.body}-${wine.tannin}-${wine.acidity}-${wine.sweetness}`;
+  
   const code =
     typeParam ??
     mainWine?.personalityTypeCode ??
-    null;
+    (mainWine ? buildCodeFromWine(mainWine) : null);
 
-  const personalityProfile: PersonalityProfile | null =
-    code && personalityMap[code] ? personalityMap[code] : null;
-
-  const personalityTitle =
-    personalityProfile?.title ?? '당신만의 와인 스타일';
-
-  const personalityDescription =
-    personalityProfile?.description ??
-    '당신의 선택을 기반으로 어울리는 와인 스타일을 추천해드렸어요.';
-
+  const personalityProfile: PersonalityProfile = getPersonalityProfile(code);
+  const personalityTitle = personalityProfile.title;
+  const personalityDescription = personalityProfile.description;
 
   const handleGoHome = () => navigate('/');
 
@@ -116,7 +108,8 @@ export default function ResultPage() {
     
     // 현재 URL 파라미터 재구성
     const listParam = wines.map((w) => w.id).join(',');
-    const linkUrl = `${dothomeDomain}/result?main=${mainWine.id}&list=${listParam}`;
+    const type = code ?? '';
+    const linkUrl = `${dothomeDomain}/result?main=${mainWine.id}&list=${listParam}&type=${type}`;
     const imageUrl = `${dothomeDomain}${mainWine.image}`;
 
     window.Kakao.Share.sendDefault({
@@ -235,7 +228,7 @@ export default function ResultPage() {
           </section>
           {/* 퀴즈 선택 결과 요약 + 그래프 */}
             {resultAnswers && (
-              <div className="mb-12 flex justify-center">
+              <div className="flex justify-center">
                 <TasteSummary answers={resultAnswers} />
               </div>
             )}
@@ -254,7 +247,7 @@ export default function ResultPage() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
                 {wines.map((wine) => (
                   <WineCard
                     key={wine.id}

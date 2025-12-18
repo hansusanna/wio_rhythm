@@ -16,7 +16,7 @@ export default {
         // 1.브랜드
         brand: {
           primary: '#370910', // mainColor
-          accent: '#570E19',   // red
+          accent: '#570E19',  
           disabled: '#E2E2E2' , // 비활성화
           dark: '#220D0C',    // footer
           kakao: '#FEE500',    // 카카오톡 버튼
@@ -72,7 +72,7 @@ export default {
         en: ['Caudex', 'serif'],
       },
       fontSize: {
-        picktit:['128px', {
+        picktit:['var(--ty-picktit-size)', {
           lineHeight: '1',
         }],
         tit: ['var(--ty-tit-size)', {
@@ -83,9 +83,11 @@ export default {
           lineHeight: 'var(--ty-body-lineh)',
         }],
         h1: ['var(--ty-tit-size)', {
-          lineHeight: 'var(--ty-tit-lineh)',
+          lineHeight: 'var(--ty-body-lineh)',
         }], // = tit (명확한 레벨 구분용)
-        h2:'var(--ty-h2-size)',
+        h2:['var(--ty-h2-size)', {
+          lineHeight: '1.4',
+        }],
         h3: ['var(--ty-h2-size)', {
           lineHeight: '1.4',
         }], // 서브 섹션 제목
@@ -133,6 +135,21 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-none": {
+          /* Firefox */
+          "scrollbar-width": "none",
+          /* IE / Edge (legacy) */
+          "-ms-overflow-style": "none",
+          /* WebKit */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    },
+  ],
 }
 
