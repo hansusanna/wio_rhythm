@@ -12,7 +12,7 @@ export function OptionChip({ label, active = false, onClick }: OptionChipProps) 
       onClick={onClick}
       aria-pressed={active}
       className={[
-        'rounded-xl px-7 py-5 border text-base transition font-medium',
+        'w-full rounded-xl py-5 border text-base transition font-medium',
         active
           ? 'bg-brand-accent text-white border-brand-accent'
           : 'bg-ui-btnbg text-brand-accent border-brand-accent hover:bg-brand-accent hover:text-white',

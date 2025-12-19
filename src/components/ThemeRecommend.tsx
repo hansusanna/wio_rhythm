@@ -74,8 +74,8 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
     if (onToggleLike) onToggleLike(id);
   };
 
-  // 디자인 토큰 기반 클래스(하드코딩 최소화)
-  const tabBase = 'rounded-button border px-sm md:py-1 text-body font-normal transition-colors duration-200';
+  // 디자인 토큰 기반 클래스
+  const tabBase = 'rounded-button border px-1 md:px-sm py-1 text-xs md:text-body font-normal transition-colors duration-200';
   const tabActive = 'bg-brand-accent text-white border-brand-accent';
   const tabIdle = 'bg-white text-brand-accent border-brand-accent hover:bg-brand-accent hover:text-white';
 
@@ -83,12 +83,12 @@ export function ThemeRecommendation({ likedWineIds, onToggleLike }: Props) {
     <section className="mt-section mb-lg">
       <div className="container mx-auto">
         {/* 섹션 제목 */}
-        <h2 className="mb-5 md:mb-10 text-center text-tit font-normal text-brand-dark">
+        <h2 className="mb-5 md:mb-10 text-center text-h1 font-normal text-brand-dark">
           테마별 추천
         </h2>
 
         {/* 탭 메뉴 */}
-        <div className="mb-md flex flex-wrap justify-center gap-sm md:gap-md">
+        <div className="mb-md flex flex-wrap justify-center gap-sm md:gap-lg">
           {THEMES.map((theme) => (
             <button
               key={theme.id}

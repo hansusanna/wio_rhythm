@@ -91,17 +91,17 @@ export function WineCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block"
+      className="block group"
       aria-label={`${nameKo} 카페24 상품 상세로 이동`}
     >
     <article className={`flex flex-col ${className}`}>
-      <div className="relative bg-ui-cardBg p-1.5 md:p-5 pb-0">
+      <div className="relative bg-ui-cardBg p-sm md:p-5 pb-0">
         {/* 와인 이미지 */}
         <div className="relative mb-3 flex items-center justify-center">
           <img
             src={image}
             alt={nameKo}
-            className="h-[180px] md:h-[280px] w-auto object-contain"
+            className="h-44 md:h-64 w-auto object-contain"
           />
         </div>
         {/* 상단 라벨 & 찜버튼 */}
@@ -110,7 +110,7 @@ export function WineCard({
             {labels?.map((label) => (
               <span
                 key={label}
-                className={`inline-block px-1 leading-relaxed text-[11px] font-normal text-black text-center ${labelColorMap[label]}`}
+                className={`inline-block px-1 leading-relaxed text-badge font-normal text-black text-center ${labelColorMap[label]}`}
               >
                 {labelTextMap[label] ?? label}
               </span>
@@ -142,9 +142,9 @@ export function WineCard({
         </div>
       </div>
       {/* 텍스트 영역 */}
-      <div className="flex flex-1 flex-col bg-white p-3 mt-1">
+      <div className="flex flex-1 flex-col bg-white p-1 md:p-2 mt-1">
         {/* 상단 카테고리(나라/타입) */}
-        <p className="text-sm text-ui-gray font-normal leading-none pb-2">
+        <p className="text-caption md:text-sm text-ui-gray font-normal pb-1">
           {type && (
             <>
               {country
@@ -158,33 +158,39 @@ export function WineCard({
         </p>
 
         {/* 국문 이름 */}
-        <h3 className="truncate text-lg font-normal text-black leading-none pb-2">
+        <h3 className="truncate text-base md:text-lg font-normal text-black pb-1">
           {nameKo}
         </h3>
 
         {/* 영문 이름 */}
         {nameEn && (
-          <p className="truncate text-sm text-black font-en leading-none pb-2.5">{nameEn}</p>
+          <p className="truncate text-sm text-black font-en pb-1.5">{nameEn}</p>
         )}
 
         {/* 가격 영역 */}
         {showPrice && (
+          // 모바일(col-세로), PC(row-가로)
           <div className="flex flex-col md:flex-row md:items-baseline md:gap-2 pb-2.5">
-            {hasDiscount && (
-              <span className="text-sm text-ui-gray line-through">
-                {originalPrice!.toLocaleString()}원
-              </span>
-            )}
-            {hasDiscount && discountPercent !== null && (
-              <span className="text-sm font-normal text-red-500">
-                -{discountPercent}%
-              </span>
-            )}
-
-            <span className="text-lg font-semibold text-black leading-none">
+            
+            {/* 원가 + 할인율 */}
+            <div className="flex items-baseline gap-1 md:gap-2">
+              {hasDiscount && (
+                <span className="text-xs md:text-sm text-ui-gray line-through">
+                  {originalPrice!.toLocaleString()}원
+                </span>
+              )}
+              {hasDiscount && discountPercent !== null && (
+                <span className="text-xs md:text-sm font-normal text-red-500">
+                  -{discountPercent}%
+                </span>
+              )}
+            </div>
+            {/* 최종 판매가 모바일: 위 그룹 밑으로 떨어짐 / PC: 옆으로 붙음 */}
+            <span className="mt-0.5 md:mt-0 text-base md:text-lg font-semibold text-black leading-none">
               {displayPrice.toLocaleString()}
               <span className="ml-1 text-sm font-normal">원</span>
             </span>
+            
           </div>
         )}
 
@@ -192,10 +198,10 @@ export function WineCard({
           <div className="flex items-center gap-2 leading-none">           
             {/* 평점 / 리뷰 */}
             {(rating || reviewCount) && (
-              <div className="flex items-center gap-1 text-sm text-ui-gray leading-none">
+              <div className="flex items-center gap-1 text-xs md:text-sm text-ui-gray leading-none">
                 {rating && (
                   <>
-                    <span className="text-[13px] text-amber-400 leading-none">★</span>
+                    <span className="text-caption text-amber-400 leading-none">★</span>
                     <span>{rating.toFixed(1)}</span>
                   </>
                 )}
@@ -210,11 +216,11 @@ export function WineCard({
             {stockLabel && (
               <div>
                 {/* 모바일 */}
-                <span className="rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white md:hidden">
+                <span className="whitespace-nowrap rounded-md bg-semantic-stock px-2 py-1 text-xxs font-medium text-white md:hidden">
                   {mobileStockText}
                 </span>
                 {/* md 이상 */}
-                <span className="hidden rounded-md bg-semantic-stock px-2 py-1 text-xs font-bold text-white md:inline">
+                <span className="hidden whitespace-nowrap rounded-md bg-semantic-stock px-2 py-1 text-caption font-bold text-white md:inline">
                   {stockLabel}
                 </span>
               </div>

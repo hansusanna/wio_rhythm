@@ -52,7 +52,7 @@ function Question({
           </div>
         )}
       </div>     
-      <div className="mt-section flex items-center justify-center gap-5 overflow-x-auto mb-section">
+      <div className="mt-section flex flex-col md:flex-row items-center justify-center gap-5 overflow-x-auto mb-section">
         {options.map(opt => (      
             <OptionChip
               key={opt.value}

@@ -5,93 +5,63 @@ $breakpoint-lg: 1080px;
 $breakpoint-xl: 1440px;
 
 :root {
-  /* Default Mode (375px) - Mobile */
-  --font-body-family : 'Caudex','Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* 타이포그래피 */
   --ty-picktit-size: 100px;
-  --ty-tit-size: 24px;
-  --ty-sub-size: 18px;
-  --ty-navi-size: 16px;
-  --ty-h2-size: 26px;
-  --ty-sctit-size: 36px;
-  --ty-body-size: 14px;
-  --ty-banner-size: 52px;  
-  --ty-findtit-size:24px;  
-  --ty-tit-lineh: 32px;
-  --ty-body-lineh: 20px;
+   --ty-sctit-size: 24px;
+  --ty-findtit-size:22px;
+  --text-h1: 24px;
+  --line-h1: 1.3; /* px 대신 비율 사용 권장 */
+  --text-h2: 20px;  
+  --text-h3: 16px;
+  --text-body: 14px;
+  --line-body: 1.5;
+
+  /* 간격 (Spacing) - 반응형 패딩용 */
   --sp-xl: 24px;
   --sp-lg: 12px;
   --sp-md: 10px;
   --sp-sm: 8px;
-  --grid-columns: 1; /* Tailwind CSS에서 직접 사용하기 어렵지만, 참고용으로 정의 */
 }
 
-// min-width 큰 범주를 위로 올림
-@media (min-width:$breakpoint-md) {
-// 768이상일때이므로 가장 범주가 크므로 우선순위를 낮춰야 하므로 위로 올려야한다.
-  :root {
-    --ty-picktit-size: 128px;
-    --ty-tit-size: 28px;
-    --ty-sub-size: 18px;
-    --ty-navi-size: 16px;
-    --ty-h2-size: 24px;
-    --ty-sctit-size: 32px;
-    --ty-body-size: 14px;
-    --ty-banner-size: 52px;  
-    --ty-findtit-size:26px;
-    --ty-tit-lineh: 36px;
-    --ty-body-lineh: 20px;
+/* Tablet (768px ~) */
+@media (min-width: $breakpoint-md) {
+  :root { 
     --sp-xl: 32px;
     --sp-lg: 16px;
-    --sp-md: 10px;
-    --sp-sm: 4px;
-    --grid-columns: 2;
+    --sp-md: 12px;
   }
 }
 
-/*1080이상일때 변수 */
+/* Desktop (1080px ~) - LG/XL 통합 고려 */
 @media (min-width: $breakpoint-lg) {
   :root {
-    --ty-picktit-size: 128px;
-    --ty-tit-size: 36px;
-    --ty-sub-size: 22px;
-    --ty-navi-size: 18px;
-    --ty-h2-size: 26px;
-    --ty-sctit-size: 34px;
-    --ty-body-size: 16px;
-    --ty-banner-size: 58px;  
-    --ty-findtit-size:26px;
-    --ty-tit-lineh: 44px;
-    --ty-body-lineh: 24px;
+    --text-h1: 36px;
+    --text-h2: 22px;
+    --text-h3: 18px;
+    --text-body: 16px;
+
     --sp-xl: 48px;
     --sp-lg: 24px;
-    --sp-md: 12px;
-    --sp-sm: 8px;
-    --grid-columns: 3;
+    --sp-md: 16px;
   }
 }
 
-/* Desktop (1440px)*/
-@media (min-width:$breakpoint-xl) {
+/* Wide Desktop (1440px ~) */
+@media (min-width: $breakpoint-xl) {
   :root {
     --ty-picktit-size: 128px;
-    --ty-tit-size: 40px;
-    --ty-sub-size: 24px;
-    --ty-navi-size: 20px;
-    --ty-h2-size: 28px;
-    --ty-sctit-size: 36px;
-    --ty-body-size: 18px;
-    --ty-banner-size: 60px;
+    --ty-sctit-size: 28px;
     --ty-findtit-size:26px;
-    --ty-tit-lineh: 56px;
-    --ty-body-lineh: 28px;
+    --text-h1: 40px;
+    --text-h2: 24px; 
+    --text-h3: 20px;
+    --text-body: 18px;
     --sp-xl: 64px;
-    --sp-lg: 32px;
-    --sp-md: 16px;
-    --sp-sm: 8px;
-    --grid-columns: 4;
-    --main-w: 640px;  /* 메인 */
-    --gap-x: 200px;   /* 사이 간격 */
-    --aside-w: 590px;  /* 좌측 메뉴 */
+    --sp-lg: 32px;    
+    /* 레이아웃 관련 변수는 꼭 필요한 경우에만 이곳에 남김 */
+    --main-w: 640px;
+    --aside-w: 590px;
+    --gap-x: 200px; 
     --main-left: calc(50% - (var(--main-w) / 2));
   }
 }

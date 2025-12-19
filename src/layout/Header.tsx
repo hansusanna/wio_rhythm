@@ -136,7 +136,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
               <span lang={item.lang ?? 'ko'}>{item.title}</span>
               {badgeLinks.has(item.link) && (
                 <span
-                  className={`absolute -top-0 -right-3 z-10 leading-none text-[10px] ${
+                  className={`absolute -top-0 -right-3 z-10 leading-none text-xxs ${
                     isActive ? 'text-white' : isWhiteBg ? 'text-brand-primary' : 'text-white'
                   }`}
                   aria-hidden="true"
@@ -155,7 +155,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex w-full items-center gap-2 rounded-md px-2 py-1 [font-size:var(--ty-navi-size)] font-normal transition-colors duration-150 ${inactiveClass}`}
+                  className={`flex w-full items-center gap-2 rounded-md px-2 py-1 text-h3 font-normal transition-colors duration-150 ${inactiveClass}`}
                   onClick={closeMobileMenu}
                 >
                   <Label isActive={false} />
@@ -170,7 +170,7 @@ export default function Header({ onStartQuiz }: HeaderProps) {
               <NavLink
                 to={item.link}
                 className={({ isActive }) =>
-                  `flex w-full items-center gap-2 rounded-md px-2 py-1 [font-size:var(--ty-navi-size)] font-normal transition-colors duration-150
+                  `flex w-full items-center gap-2 rounded-md px-2 py-1 text-h3 font-normal transition-colors duration-150
                   ${
                     isActive
                       ? 'bg-brand-primary text-white'
@@ -245,8 +245,8 @@ export default function Header({ onStartQuiz }: HeaderProps) {
           </div>
 
           <div className="mb-8 md:mb-20">
-            <h1 className="text-tit font-maru font-bold mb-6">평범함을 특별한 순간으로</h1>
-            <h2 className="text-subtit text-white font-extralight">
+            <h1 className="text-h1 font-maru font-bold mb-6">평범함을 특별한 순간으로</h1>
+            <h2 className="text-h2 text-white font-extralight">
               매달 찾아오는 와인처럼, 당신의 <span className="font-semibold">바이오리듬에 와인</span>을 더하세요.
             </h2>
           </div>

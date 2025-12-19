@@ -55,7 +55,7 @@ export default function Home({ onStart }: HomeProps) {
             </p>
 
             {/* 서브타이틀: 메인 640px 기준 80% */}
-            <p className="max-w-[512px] text-h2 font-medium mb-10 md:mb-20">
+            <p className="max-w-[512px] text-sctit font-medium mb-10 md:mb-20">
               수 많은 와인 속,<br/>당신만의 보석을 찾아보세요
             </p>
 

@@ -38,7 +38,7 @@ export function MasterPickSection({ likedWineIds, onToggleLike }: Props) {
     <section className="mt-section">
       {/* 섹션 타이틀 */}
       <header className="mb-5 md:mb-10 text-center">
-        <h2 className="mb-0.5 md:mb-1 text-center text-tit font-normal text-brand-dark">
+        <h2 className="mb-0.5 md:mb-1 text-center text-h1 font-normal text-brand-dark">
           마스터의 특별 추천
         </h2>
         <p className="text-body text-ui-textSecondary">
