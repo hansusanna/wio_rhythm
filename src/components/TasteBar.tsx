@@ -23,7 +23,7 @@ export function TasteBar({ label, levelKey, answers }: Props) {
 
   return (
     <div className="flex items-center gap-3 h-[32px]">
-      <div className="w-16 shrink-0 text-gray-700 font-semibold">{label}</div>
+      <div className="w-16 shrink-0 text-ui-textSecondary font-semibold">{label}</div>
       <div className="flex flex-1 flex-col gap-1">
         <div className="flex gap-1">
           {[0, 1, 2].map((i) => (
@@ -31,12 +31,12 @@ export function TasteBar({ label, levelKey, answers }: Props) {
               key={i}
               className={
                 'h-2 flex-1 rounded-full transition-colors ' +
-                (activeIndex === i ? 'bg-[#570E19]' : 'bg-brand-lightred')
+                (activeIndex === i ? 'bg-brand-accent' : 'bg-brand-lightred')
               }
             />
           ))}
         </div>
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-ui-gray">
           {stepsLabel.map((txt) => (
             <span key={txt}>{txt}</span>
           ))}

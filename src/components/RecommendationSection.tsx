@@ -129,7 +129,9 @@ export function RecommendationSection({ answers, onGoHome }: Props) {
       </header>
 
       {/* 질문 선택 결과 요약 + 그래프 */}
-      <TasteSummary answers={answers} />
+      <div className='flex justify-center'>
+        <TasteSummary answers={answers} />
+        </div>
       
       {/* 와인 카드 그리드 */}
      <div className="px-1">

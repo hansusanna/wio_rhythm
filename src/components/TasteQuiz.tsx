@@ -65,9 +65,9 @@ function QuizHeader({ current, total }: { current: number; total: number }) {
   return (
     <header>
       <p className="text-body mb-md flex items-center text-ui-textSecondary font-normal"><WineGlassIcon className="mx-sm w-8 h-8" />나에게 딱 맞는 와인이 궁금하다면?</p>
-      <div className="mt-md font-normal flex justify-center items-baseline">
-        <span className="text-h2 text-brand-accent">{current}</span>
-        <span className="text-caption">/{total}</span>
+      <div className="mt-xl font-normal flex justify-center items-baseline">
+        <span className="text-h1 text-brand-accent">{current}</span>
+        <span className="text-body">/{total}</span>
       </div>
     </header>
   );
