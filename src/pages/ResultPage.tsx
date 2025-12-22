@@ -7,7 +7,7 @@ import {
   getPersonalityProfile,
   type PersonalityProfile,
 } from '@/db/type/personalityType';
-import type { QuizAnswers } from '@/db/type/quiz';
+import { getAnswersFromQuery } from '@/utils/queryAnswers';
 import { TasteSummary } from '@/components/TasteSummary';
 import { WineCard } from '@/components/ui/WineCard';
 import { BottomActions } from '@/components/ui/BottomActions';
@@ -54,19 +54,10 @@ export default function ResultPage() {
     }
   }, []);
 
-  const resultAnswers: QuizAnswers | null = useMemo(() => {
-    if (!mainWine) return null;
-
-    return {
-      type: mainWine.type,
-      region: mainWine.region,
-      body: mainWine.body,
-      tannin: mainWine.tannin,
-      acidity: mainWine.acidity,
-      sweetness: mainWine.sweetness,
-    };
-  }, [mainWine]);
-
+  const resultAnswers = useMemo(
+    () => getAnswersFromQuery(searchParams, mainWine),
+    [searchParams, mainWine],
+  );
   /* 취향 유형 매칭 (code → title + description) */
   // URL 예: ?type=full-strong-low-low
   const typeParam = searchParams.get('type');

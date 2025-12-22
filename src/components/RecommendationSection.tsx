@@ -56,8 +56,21 @@ export function RecommendationSection({ answers, onGoHome }: Props) {
     // 추천 리스트 id 배열
     const listParam = matchedWines.map((w) => w.id).join(',');
 
-    // 결과 페이지 링크
-    const linkUrl = `${dothomeDomain}/result?main=${mainWine.id}&list=${listParam}`;
+    const a = answers; // 여기서는 resultAnswers 말고 props answers
+
+    const type = `${a.body}-${a.tannin}-${a.acidity}-${a.sweetness}`; // (ResultPage에서 쓰는 type 구조랑 맞추기)
+
+    const linkUrl =
+      `${dothomeDomain}/result` +
+      `?main=${mainWine.id}` +
+      `&list=${listParam}` +
+      `&type=${type}` +
+      `&atype=${a.type ?? ''}` +
+      `&region=${a.region ?? ''}` +
+      `&body=${a.body ?? ''}` +
+      `&tannin=${a.tannin ?? ''}` +
+      `&acidity=${a.acidity ?? ''}` +
+      `&sweetness=${a.sweetness ?? ''}`;
 
     // 이미지 URL은 그대로 대표 와인 이미지 사용 이미지는 웹 URL
     const imageUrl = `${dothomeDomain}${mainWine.image}`;
