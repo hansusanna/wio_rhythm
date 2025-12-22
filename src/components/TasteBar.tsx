@@ -36,7 +36,7 @@ export function TasteBar({ label, levelKey, answers }: Props) {
             />
           ))}
         </div>
-        <div className="flex justify-between text-xs ui.gray">
+        <div className="flex justify-between text-xs text-ui-gray">
           {stepsLabel.map((txt) => (
             <span key={txt}>{txt}</span>
           ))}

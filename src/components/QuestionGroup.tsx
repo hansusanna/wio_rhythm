@@ -43,7 +43,7 @@ function Question({
   return (
     <div className="border-b border-border-default pt-lg text-center pb-md">
       <div className="mb-4">
-        <h3 className="pb-5 text-h3 font-semibold">{title}</h3>
+        <h2 className="pb-3 text-h2 font-semibold">{title}</h2>
         {hints && hints.length > 0 && (
           <div className="text-body text-ui-textSecondary space-y-0.5">
             {hints.map((hint, index) => (
@@ -52,7 +52,7 @@ function Question({
           </div>
         )}
       </div>     
-      <div className="mt-section flex flex-col md:flex-row items-center justify-center gap-5 overflow-x-auto mb-section">
+      <div className="mt-section flex flex-col md:flex-row items-center justify-center gap-2 overflow-x-auto mb-section">
         {options.map(opt => (      
             <OptionChip
               key={opt.value}

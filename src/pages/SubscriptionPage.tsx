@@ -1,10 +1,11 @@
 // src/pages/SubscriptionPage.tsx
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Check, Wine as WineIcon } from 'lucide-react';
+import { Check, CircleX, Wine as WineIcon } from 'lucide-react';
 import type { Wine } from '@/db/type/wine';
 import { WineCard } from '@/components/ui/WineCard';
 import { BottomActions } from '@/components/ui/BottomActions'; 
+import SubscribeForm from '@/components/SubscribeForm';
 
 export default function SubscriptionPage() {
   const navigate = useNavigate();
@@ -32,11 +33,14 @@ export default function SubscriptionPage() {
 
      // 핸들러 함수 정의
   const handleGoHome = () => navigate('/');
+
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
   
   const handleSubscribe = () => {
-    // 실제 구독 로직 구현 (예: 결제 페이지 이동 등)
     if (selectedWineId) {
-      alert('구독 신청이 완료되었습니다! (추후 결제 연동)');
+      setIsModalOpen(true); // 모달 열기
+  } else {
+      alert('와인을 먼저 선택해주세요!');
     }
   };
 
@@ -194,6 +198,7 @@ export default function SubscriptionPage() {
                       wine={wine}
                       showPrice={false}
                       className="h-full"
+                      disableLink={true} // 링크비활성화
                     />
                   </div>
                 ))}
@@ -214,6 +219,22 @@ export default function SubscriptionPage() {
           </footer>
         </div>
       </section>
+      {/* 모달 오버레이 */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+          <div className="w-full max-w-md relative">
+            {/* 닫기 아이콘*/}
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-3 right-3 text-ui-gray hover:text-gray-700 md:right-4 md:top-3"
+            > 
+            <CircleX className="w-6 h-6 text-brand-gray" />
+            
+            </button>
+            <SubscribeForm onClose={() => setIsModalOpen(false)} />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

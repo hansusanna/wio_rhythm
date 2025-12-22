@@ -52,6 +52,7 @@ export default {
           dark: '#9CA3AF',
           brand: '#570E19',
           white: 'rgba(255,255,255,0.1)',
+          linered: '#ccb9b5',
         },
         gold: {
           100: '#F9F1D8',
